@@ -489,7 +489,7 @@
 			
 				jQuery(grid_selector).jqGrid({
 					//direction: "rtl",
-					url:'http://104.236.0.195/crud_associacao.php',
+					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
 					colNames:['Código','Sigla','Nome','CNPJ','CNPJ'],
