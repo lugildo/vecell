@@ -26,7 +26,7 @@ class Crud {
 	// Função para listar associaçoes
 	function getAssociacoes() {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, Sigla, Nome, CNPJ, Endereco, Bairro, CEP, Cidade, FK_UF, Site, Email, Fone, Fax, Celular, Ag, Cta, Nome_Presid, RG_Presid, CPF_Presid, Nome_Vice, RG_Vice, CPF_VIce, Nome_Tes, RG_Tes, CPF_Tes, Nome_Contato, Fone_Contato, Contato_Adm, Fone_Adm, Contato_Fin, Fone_Fin, Link_Rede, VetorSecretarias,
+			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, Sigla, Nome, CNPJ, Endereco, Bairro, CEP, Cidade, FK_UF, Site, Email, Fone, Fax, Celular, Ag, Cta, Nome_Presid, RG_Presid, CPF_Presid, Nome_Vice, RG_Vice, CPF_Vice, Nome_Tes, RG_Tes, CPF_Tes, Nome_Contato, Fone_Contato, Contato_Adm, Fone_Adm, Contato_Fin, Fone_Fin, Link_Rede, VetorSecretarias,
 													IsNull(Invisivel_Btn_Ass, Cast('0' as Bit)) As Oculto
 											  FROM 	TB_Associacoes "); 
 
