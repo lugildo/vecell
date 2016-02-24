@@ -492,12 +492,13 @@
 					url:'http://104.236.0.195/crud_associacao.php',
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Sigla','Nome','CNPJ'],
+					colNames:['Código','Sigla','Nome','CNPJ','CNPJ'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false},
 						{name:'Sigla',index:'Sigla', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
 						{name:'Nome',index:'Nome',width:150, editable:true,editoptions:{size:"20",maxlength:"150"}},
-						{name:'CNPJ',index:'CNPJ', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}}
+						{name:'CNPJ',index:'CNPJ', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
+						|{name:'CNPJ',index:'CNPJ', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}}
 					], 
 			
 					viewrecords : true,
