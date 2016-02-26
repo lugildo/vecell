@@ -486,14 +486,6 @@
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
-				
-				var template = "<div style='margin-left:15px;'><div> Código:</div><div> {PK_Codigo} </div>";
-							template += "<div> Sigla: </div><div>{Sigla} </div>";
-							template += "<div> Nome: </div><div>{Nome} </div>";
-							template += "<div> CNPJ: </div><div>{CNPJ} </div>";
-							template += "<div> Endereço:</div><div> {Endereco} </div>";
-							template += "<hr style='width:100%;'/>";
-							template += "<div> {sData} {cData}  </div></div>";
 			
 				jQuery(grid_selector).jqGrid({
 					//direction: "rtl",
@@ -503,13 +495,55 @@
 					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link da Rede','Vetor_Secretarias'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false},
-						{name:'Sigla',index:'Sigla', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
-						{name:'Nome',index:'Nome',width:150, editable:true,editoptions:{size:"20",maxlength:"150"}},
-						{name:'CNPJ',index:'CNPJ', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
-						{name:'Endereco',index:'Endereco', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
-						{name:'Bairro',index:'Bairro', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
-						{name:'CEP',index:'CEP', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
-						{name:'Cidade',index:'Cidade', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
+						{name:'Sigla',index:'Sigla', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 1, // the position of the row
+                            label: "Sigla: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Nome',index:'Nome',width:150, editable:true,editoptions:{size:"20",maxlength:"150"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 1, // the position of the row
+                            label: "Nome: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'CNPJ',index:'CNPJ', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 2, // the position of the row
+                            label: "CNPJ: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Endereco',index:'Endereco', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 2, // the position of the row
+                            label: "Endereço: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Bairro',index:'Bairro', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 3, // the position of the row
+                            label: "Bairro: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'CEP',index:'CEP', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 3, // the position of the row
+                            label: "CEP: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Cidade',index:'Cidade', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 4, // the position of the row
+                            label: "Cidade: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
 						{name:'FK_UF',index:'FK_UF', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
 						{name:'Site',index:'Site', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
 						{name:'Email',index:'Email', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
@@ -611,6 +645,9 @@
 					{
 						//edit record form
 						//closeAfterEdit: true,
+						height: 'auto',
+                    	width: 620,
+						editCaption: "Alterar dados da associação",
 						recreateForm: true,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
@@ -620,6 +657,8 @@
 					},
 					{
 						//new record form
+						height: 'auto',
+                    	width: 620,
 						closeAfterAdd: true,
 						recreateForm: true,
 						viewPagerButtons: false,
