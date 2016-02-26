@@ -492,7 +492,7 @@
 					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Sigla','Nome','CNPJ','CNPJ','Endereço,'Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Nome Presidente','RG','CPF','Nome Vice-presidente','RG','CPF','Nome Tesoureiro','RG','CPF','Contato Secretaria','Fone','Contato Administrativo','Fone','Contato Financeiro','Fone','Link da Rede','Vetor Secretarias'],
+					colNames:['Código','Sigla','Nome','CNPJ','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Nome Presidente','RG','CPF','Nome Vice-presidente','RG','CPF','Nome Tesoureiro','RG','CPF','Contato Secretaria','Fone','Contato Administrativo','Fone','Contato Financeiro','Fone','Link da Rede','Vetor Secretarias'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false},
 						{name:'Sigla',index:'Sigla', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
