@@ -486,13 +486,21 @@
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
+				
+				var template = "<div style='margin-left:15px;'><div> Código:</div><div> {PK_Codigo} </div>";
+							template += "<div> Sigla: </div><div>{Sigla} </div>";
+							template += "<div> Nome: </div><div>{Nome} </div>";
+							template += "<div> CNPJ: </div><div>{CNPJ} </div>";
+							template += "<div> Endereço:</div><div> {Endereco} </div>";
+							template += "<hr style='width:100%;'/>";
+							template += "<div> {sData} {cData}  </div></div>";
 			
 				jQuery(grid_selector).jqGrid({
 					//direction: "rtl",
 					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Sigla','Nome','CNPJ','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link da Rede','Vetor_Secretarias'],
+					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link da Rede','Vetor_Secretarias'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false},
 						{name:'Sigla',index:'Sigla', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"}},
