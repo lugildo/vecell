@@ -796,7 +796,7 @@
 						//edit record form
 						//closeAfterEdit: true,
 						height: 'auto',
-                    	width: 620,
+                    	width: 800,
 						editCaption: "Alterar dados da associação",
 						recreateForm: true,
 						beforeShowForm : function(e) {
@@ -808,8 +808,8 @@
 					{
 						//new record form
 						height: 'auto',
-                    	width: 620,
-						editCaption: "Cadastrar associação",
+                    	width: 800,
+						addCaption: "Cadastrar associação",
 						closeAfterAdd: true,
 						recreateForm: true,
 						viewPagerButtons: false,
@@ -821,7 +821,7 @@
 					},
 					{
 						//delete record form
-						editCaption: "Excluir associação",
+						delCaption: "Excluir associação",
 						recreateForm: true,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
@@ -857,8 +857,8 @@
 					{
 						//view record form
 						height: 'auto',
-                    	width: 620,
-						editCaption: "Visualizar dados da associação",
+                    	width: 800,
+						viewCaption: "Visualizar dados da associação",
 						recreateForm: true,
 						beforeShowForm: function(e){
 							var form = $(e[0]);
