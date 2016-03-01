@@ -202,12 +202,13 @@ class Crud {
 													Dt_Mensal_Cartao, Mensal_Cartao, 
 													Dt_Seguro, Seguro, Nome_Seguro, 
 													Dt_Assist_Jurid, Assist_Juridica, Nome_Ass_Jur, 
-													Dt_Colombo_Virtual, Colombo_Virtual,
+													Dt_Colombo_Virt, Colombo_Virtual,
 													Dt_Extrato, Extrato,
 													Dt_Plano_Sta_Casa, Plano_Santa_Casa,
 													Dt_Angelus, Angelus,
 													Dt_Clube_Desc, Clube_Descontos
-											  FROM 	TB_Clientes "); 
+											  FROM 	TB_Clientes 
+											  WHERE FK_Assoc NOT IN (10)"); 
 
 											  
 			if($oResult)

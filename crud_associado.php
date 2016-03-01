@@ -45,7 +45,7 @@ if ($_GET) {
 		$oAssociados[$i]->Dt_Assist_Jurid 		= utf8_encode($oAssociados[$i]->Dt_Assist_Jurid);
 		$oAssociados[$i]->Assist_Juridica 		= utf8_encode($oAssociados[$i]->Assist_Juridica);
 		$oAssociados[$i]->Nome_Ass_Jur 			= utf8_encode($oAssociados[$i]->Nome_Ass_Jur);
-		$oAssociados[$i]->Dt_Colombo_Virtual 	= utf8_encode($oAssociados[$i]->Dt_Colombo_Virtual);
+		$oAssociados[$i]->Dt_Colombo_Virt    	= utf8_encode($oAssociados[$i]->Dt_Colombo_Virt);
 		$oAssociados[$i]->Colombo_Virtual    	= utf8_encode($oAssociados[$i]->Colombo_Virtual);
 		$oAssociados[$i]->Dt_Extrato 			= utf8_encode($oAssociados[$i]->Dt_Extrato);
 		$oAssociados[$i]->Extrato 				= utf8_encode($oAssociados[$i]->Extrato);
