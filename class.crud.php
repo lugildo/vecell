@@ -26,8 +26,33 @@ class Crud {
 	// Função para listar associaçoes
 	function getAssociacoes() {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, Sigla, Nome, CNPJ, Endereco, Bairro, CEP, Cidade, FK_UF, Site, Email, Fone, Fax, Celular, Ag, Cta, Nome_Presid, RG_Presid, CPF_Presid, Nome_Vice, RG_Vice, CPF_Vice, Nome_Tes, RG_Tes, CPF_Tes, Nome_Contato, Fone_Contato, Contato_Adm, Fone_Adm, Contato_Fin, Fone_Fin, Link_Rede, VetorSecretarias,
-													IsNull(Invisivel_Btn_Ass, Cast('0' as Bit)) As Oculto
+			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, Sigla, Nome, 
+													CNPJ, Bco, Ag, Cta, 
+													Endereco, Bairro, CEP, Cidade, FK_UF, 
+													Site, Email, Fone, Fax, Celular, 
+													IsNull(Bloq, Cast('0' as Bit)) As Bloq, Motivo, 
+													IsNull(Bloq_Assoc, Cast('0' as Bit)) As Bloq_Assoc, 
+													IsNull(Bloq_Limite, Cast('0' as Bit)) As Bloq_Limite, 
+													Dia_Corte, Dia_relatorio, Dia_Pagto, Dia_Repasse, 
+													Dia_Envio, Endereco_Envio, 
+													Nome_Presid, RG_Presid, CPF_Presid, 
+													Nome_Vice, RG_Vice, CPF_Vice, 
+													Nome_Tes, RG_Tes, CPF_Tes, 
+													Nome_Contato, Fone_Contato, 
+													Contato_Adm, Fone_Adm, 
+													Contato_Fin, Fone_Fin, 
+													IsNull(Feira, Cast('0' as Bit)) As Feira, Fone_Feira, 
+													Link_Rede, VetorSecretarias,
+													Adm, Bonus, 
+													FK_Consultor, Consultor,
+													Mensalidade, TUC,
+													MaxParc, NPLCP,
+													Nro_Contrato, Data_Contrato, Dt_Cadastro, 
+													IsNull(Desc_Folha, Cast('0' as Bit)) As Desc_Folha, 
+													IsNull(Automotivo, Cast('0' as Bit)) As Automotivo,
+													IsNull(Desconto, Cast('0' as Bit)) As Desconto, 
+													IsNull(OptInNews, Cast('0' as Bit)) As OptInNews, 
+													IsNull(Invisivel_Btn_Ass, Cast('0' as Bit)) As Invisivel_Btn_Ass
 											  FROM 	TB_Associacoes "); 
 
 /*											SELECT 	PK_Codigo, 
