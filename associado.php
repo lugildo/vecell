@@ -482,28 +482,38 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-			var grid_data = 
-			[ 
-				{id:"1",nome:"Paulo Costa",func:"AFDEMO",fone:"(51)84185443"},
-				{id:"2",nome:"Vera",func:"AFDEMO",fone:"(51)84185444"},
-				{id:"3",nome:"Gustavo",func:"AFDEMO2",fone:"(51)84185445"}
-			];	
 			
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
 			
 				jQuery(grid_selector).jqGrid({
-					//direction: "rtl",
-					
-					data: grid_data,
-					datatype: "local",
+					url:'http://104.236.0.195/crud_associado.php', // link para buscar os dados de conexão
+					datatype: "json",
 					height: 250,
-					colNames:['Nome','Associação','Fone'],
+					colNames:['Nome','Matricula','Fone'],
 					colModel:[
-						{name:'nome',index:'nome', width:150, editable: true,editoptions:{size:"20",maxlength:"150"}},
-						{name:'func',index:'func',width:150, editable:true,editoptions:{size:"20",maxlength:"150"}},
-						{name:'fone',index:'fone', width:90,editable: true,editoptions:{size:"20",maxlength:"90"}}
+						{name:'Nome',index:'Nome', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 2, // the position of the row
+                            label: "Nome: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'PK_Matricula',index:'PK_Matricula', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 2, // the position of the row
+                            label: "Matricula: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Fone',index:'Fone', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 3, // the position of the row
+                            label: "Fone: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }}
 					], 
 			
 					viewrecords : true,
