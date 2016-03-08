@@ -251,6 +251,42 @@ class Crud {
 	
 	
 	
+	// Função para listar associaçoes
+	function getConveniadas() {
+		try {
+			$oResult = $this->oCon->query(" SELECT 	PK_Matricula, FK_Assoc, 
+			                                        Nome, Lim_Credito, Bloq, Motivo,
+			                                        Endereco, Bairro, CEP, Cidade, FK_UF,
+													Fone, Celular, Email, Email2, OptInNews, 
+													Cargo, Secretaria, 
+													RG, CPF, Bco, Ag, Cta,
+													Rescisao, Dt_Rescisao, 
+													Dt_Cadastro, Dt_Nasc,
+													Dt_Mensalidade, Mensalidade, 
+													Dt_Mensal_Cartao, Mensal_Cartao, 
+													Dt_Seguro, Seguro, Nome_Seguro, 
+													Dt_Assist_Jurid, Assist_Juridica, Nome_Ass_Jur, 
+													Dt_Colombo_Virt, Colombo_Virtual,
+													Dt_Extrato, Extrato,
+													Dt_Plano_Sta_Casa, Plano_Santa_Casa,
+													Dt_Angelus, Angelus,
+													Dt_Clube_Desc, Clube_Descontos
+											  FROM 	TB_Clientes 
+											  WHERE FK_Assoc NOT IN (10)"); 
+
+											  
+			if($oResult)
+				{
+					//percorre os resultados via o fetch()
+					$oConveniadas = $oResult->fetchAll(PDO::FETCH_OBJ);
+				}
+
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return $oConveniadas;
+	}
 	
 	
 	
