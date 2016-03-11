@@ -53,7 +53,8 @@ class Crud {
 													IsNull(Desconto, Cast('0' as Bit)) As Desconto, 
 													IsNull(OptInNews, Cast('0' as Bit)) As OptInNews, 
 													IsNull(Invisivel_Btn_Ass, Cast('0' as Bit)) As Invisivel_Btn_Ass
-											  FROM 	TB_Associacoes "); 
+											  FROM 	TB_Associacoes 
+											 ORDER BY Sigla ASC" ); 
 
 /*											SELECT 	PK_Codigo, 
 									 				Nome, 

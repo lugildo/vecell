@@ -728,11 +728,27 @@
                         }}
 					], 
 			
-					viewrecords : true,
-					rowNum:10,
-					rowList:[10,20,30],
-					pager : pager_selector,
-					altRows: true,
+					jsonReader: {
+					            repeatitems: false,
+					            root: function(obj) { return obj; },
+					            page: function(obj) { return 1; },
+					            total: function(obj) { return 1; },
+					            records: function(obj) { return obj.length; }
+					        },
+					        loadonce: true,
+					        pager: pager_selector,
+					        rowNum: 10,
+					        rowList: [5, 10, 20, 50],
+					        //sortname: 'UserId',
+					        //sortorder: "asc",
+					        viewrecords: true,
+							toppager: false,
+					
+					//viewrecords : true,
+					//rowNum:10,
+					//rowList:[10,20,30],
+					//pager : pager_selector,
+					//altRows: true,
 					//toppager: true,
 					
 					multiselect: false,
