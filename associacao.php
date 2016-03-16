@@ -493,7 +493,7 @@
 					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link da Rede','Vetor Secretarias','Clube de Descontos','Desconto em Folha','Feira','Fone p/ Agendamento','Cartão Automotivo','Bloqueio Rede','Motivo','Bloqueio Administrativo da Associação','Bloqueio de Limites de Crédito de Associados','Invisível no Botão Associação do Perfil da Credenciada','Corte','Atualização Saldo','Pagamento','Repasse Rede','Envio Documentação','Endereço de Envio','Parcelamento Máximo','Número de Parcelas do Lim. Crédito Parcelado'],
+					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link_da_Rede','Vetor_Secretarias','Clube_de_Descontos','Desconto_em_Folha','Feira','Fone_para_Agendamento_de_Feiras','Cartao_Automotivo','Bloqueio_Rede','Motivo','Bloqueio_Administrativo_da_Associacao','Bloqueio_de_Limites_de_Credito_de_Associados','Invisivel_no_Botao_Associacao_do_Perfil_da_Credenciada','Corte','Atualizacao_Saldo','Pagamento','Repasse_Rede','Envio_Documentacao','Endereco_de_Envio','Parcelamento_Maximo','Número_de_Parcelas_do_Limite_Credito_Parcelado'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
 						formoptions: {
@@ -727,24 +727,22 @@
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 // Início das alterações
-						{name:'Desconto',index:'Desconto', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+//CHECK BOX {name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Desconto',index:'Desconto', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 20, // the position of the row
                             label: "Clube de Descontos" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Desc_Folha',index:'Desc_Folha', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Desc_Folha',index:'Desc_Folha', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 20, // the position of the row
                             label: "Desconto em Folha" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Feira',index:'Feira', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Feira',index:'Feira', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 21, // the position of the row
@@ -758,20 +756,18 @@
                             label: "Fone para Agendamento da Feira: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Automotivo',index:'Automotivo', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Automotivo',index:'Automotivo', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 22, // the position of the row
                             label: "Cartão Automotivo" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 23, // the position of the row
-                            label: "Bloqueio" // the label to show for each input control                    
+                            label: "Bloqueio da Rede" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Motivo',index:'Motivo', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -781,75 +777,80 @@
                             label: "Motivo do Bloqueio: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Bloq_Limite',index:'Bloq_Limite', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Bloq_Assoc',index:'Bloq_Assoc', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 24, // the position of the row
-                            label: "Bloqueio dos Limites de Crédito dos Associados" // the label to show for each input control                    
+                            label: "Bloqueio Administrativo da Associação" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Invisivel_Btn_Ass',index:'Invisivel_Btn_Ass', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
-//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
+						{name:'Bloq_Limite',index:'Bloq_Limite', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 25, // the position of the row
+                            label: "Bloqueio dos Limites de Crédito dos Associados" // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Invisivel_Btn_Ass',index:'Invisivel_Btn_Ass', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 26, // the position of the row
                             label: "Invisível no Botão Associação do Perfil da Credenciada" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dia_relatorio',index:'Dia_relatorio', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 1, // the position of the column
-                            rowpos: 26, // the position of the row
+                            rowpos: 27, // the position of the row
                             label: "Corte: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dia_Corte',index:'Dia_Corte', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 2, // the position of the column
-                            rowpos: 26, // the position of the row
+                            rowpos: 27, // the position of the row
                             label: "Atualização Saldo: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dia_Pagto',index:'Dia_Pagto', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 1, // the position of the column
-                            rowpos: 27, // the position of the row
+                            rowpos: 28, // the position of the row
                             label: "Pagamento: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dia_Repasse',index:'Dia_Repasse', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 2, // the position of the column
-                            rowpos: 27, // the position of the row
+                            rowpos: 28, // the position of the row
                             label: "Repasse Rede: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dia_Envio',index:'Dia_Envio', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 1, // the position of the column
-                            rowpos: 28, // the position of the row
+                            rowpos: 29, // the position of the row
                             label: "Dia de Envio da Documentação: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Endereco_Envio',index:'Endereco_Envio', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 2, // the position of the column
-                            rowpos: 28, // the position of the row
+                            rowpos: 29, // the position of the row
                             label: "Endereço de Envio da Documentação: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'MaxParc',index:'MaxParc', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 1, // the position of the column
-                            rowpos: 29, // the position of the row
+                            rowpos: 30, // the position of the row
                             label: "Parcelamento Máximo: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'NPLCP',index:'NPLCP', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 2, // the position of the column
-                            rowpos: 29, // the position of the row
+                            rowpos: 30, // the position of the row
                             label: "Número de Parcelas do Limite de Crédito Parcelado: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }}
