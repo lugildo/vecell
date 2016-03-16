@@ -727,24 +727,24 @@
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 // Início das alterações
-// Checkbox:
-						{name:'Desconto',index:'Desconto', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Desconto',index:'Desconto', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 20, // the position of the row
                             label: "Clube de Descontos" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-// Checkbox
-						{name:'Desc_Folha',index:'Desc_Folha', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Desc_Folha',index:'Desc_Folha', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 20, // the position of the row
                             label: "Desconto em Folha" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-// Checkbox
-						{name:'Feira',index:'Feira', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Feira',index:'Feira', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 21, // the position of the row
@@ -758,16 +758,16 @@
                             label: "Fone para Agendamento da Feira: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-// Checkbox
-						{name:'Automotivo',index:'Automotivo', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Automotivo',index:'Automotivo', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 22, // the position of the row
                             label: "Cartão Automotivo" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-// Checkbox
-						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 23, // the position of the row
@@ -781,16 +781,16 @@
                             label: "Motivo do Bloqueio: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-// Checkbox
-						{name:'Bloq_Limite',index:'Bloq_Limite', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Bloq_Limite',index:'Bloq_Limite', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 24, // the position of the row
                             label: "Bloqueio dos Limites de Crédito dos Associados" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-// Checkbox
-						{name:'Invisivel_Btn_Ass',index:'Invisivel_Btn_Ass', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Invisivel_Btn_Ass',index:'Invisivel_Btn_Ass', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
+//{name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 25, // the position of the row
