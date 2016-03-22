@@ -227,13 +227,10 @@ class Crud {
 													Dt_Plano_Sta_Casa, Plano_Santa_Casa,
 													Dt_Angelus, Angelus,
 													Dt_Clube_Desc, Clube_Descontos
-<<<<<<< Updated upstream
-											FROM 	TB_Clientes
-											ORDER BY Nome ASC"); 
-=======
+
 											  FROM 	TB_Clientes 
 											  WHERE FK_Assoc = $iFK_Assoc"); 
->>>>>>> Stashed changes
+
 
 											  
 			if($oResult)
