@@ -491,7 +491,7 @@
 					url:'http://104.236.0.195/crud_associado.php?FK_Assoc=123', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Nome','PK_Matricula','Fone','FK_Assoc','Bloq','Motivo','Endereco','Bairro','CEP','Cidade','FK_UF','Celular','Email','Email2','OptInNews','Cargo','Secretaria','RG','CPF','Bco','Ag','Cta','Rescisao','Dt_Rescisao','Dt_Cadastro','Dt_Nasc','Dt_Mensalidade','Mensalidade','Dt_Mensal_Cartao','Mensal_Cartao','Dt_Seguro','Seguro','Nome_Seguro','Dt_Assist_Jurid','Assist_Juridica','Nome_Ass_Jur','Dt_Colombo_Virt','Colombo_Virtual','Dt_Extrato','Dt_Plano_Sta_Casa','Plano_Santa_Casa','Dt_Angelus','Angelus','Dt_Clube_Desc','Clube_Descontos'],
+					colNames:['Nome','PK_Matricula','Fone','FK_Assoc','Lim_Credito','Bloq','Motivo','Endereco','Bairro','CEP','Cidade','FK_UF','Celular','Email','Email2','OptInNews','Cargo','Secretaria','RG','CPF','Bco','Ag','Cta','Rescisao','Dt_Rescisao','Dt_Cadastro','Dt_Nasc','Dt_Mensalidade','Mensalidade','Dt_Mensal_Cartao','Mensal_Cartao','Dt_Seguro','Seguro','Nome_Seguro','Dt_Assist_Jurid','Assist_Juridica','Nome_Ass_Jur','Dt_Colombo_Virt','Colombo_Virtual','Dt_Extrato','Dt_Plano_Sta_Casa','Plano_Santa_Casa','Dt_Angelus','Angelus','Dt_Clube_Desc','Clube_Descontos'],
 					colModel:[
 						{name:'Nome',index:'Nome', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
 						formoptions: {
@@ -519,6 +519,13 @@
                             colpos: 1, // the position of the column
                             rowpos: 3, // the position of the row
                             label: "Associação: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Lim_Credito',index:'Lim_Credito', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 3, // the position of the row
+                            label: "Limite de Crédito: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Bloq',index:'Bloq', width:90, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"},editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},

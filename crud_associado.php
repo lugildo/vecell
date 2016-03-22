@@ -11,6 +11,7 @@ if ($_GET) {
 		$oAssociados[$i]->PK_Matricula 			= utf8_encode($oAssociados[$i]->PK_Matricula);
 		$oAssociados[$i]->FK_Assoc 				= utf8_encode($oAssociados[$i]->FK_Assoc);
 		$oAssociados[$i]->Nome 					= utf8_encode($oAssociados[$i]->Nome);
+		$oAssociados[$i]->Lim_Credito			= utf8_encode($oAssociados[$i]->Lim_Credito);
 		$oAssociados[$i]->Bloq 					= utf8_encode($oAssociados[$i]->Bloq);
 		$oAssociados[$i]->Motivo 				= utf8_encode($oAssociados[$i]->Motivo);
 		$oAssociados[$i]->Endereco 				= utf8_encode($oAssociados[$i]->Endereco);
@@ -36,7 +37,6 @@ if ($_GET) {
 		$oAssociados[$i]->Dt_Nasc 				= utf8_encode($oAssociados[$i]->Dt_Nasc);
 		$oAssociados[$i]->Dt_Mensalidade 		= utf8_encode($oAssociados[$i]->Dt_Mensalidade);
 		$oAssociados[$i]->Mensalidade 			= utf8_encode($oAssociados[$i]->Mensalidade);
-		$oAssociados[$i]->Dt_Mensal_Cartao 		= utf8_encode($oAssociados[$i]->Dt_Mensal_Cartao);
 		$oAssociados[$i]->Dt_Mensal_Cartao 		= utf8_encode($oAssociados[$i]->Dt_Mensal_Cartao);
 		$oAssociados[$i]->Mensal_Cartao 		= utf8_encode($oAssociados[$i]->Mensal_Cartao);
 		$oAssociados[$i]->Dt_Seguro 			= utf8_encode($oAssociados[$i]->Dt_Seguro);
