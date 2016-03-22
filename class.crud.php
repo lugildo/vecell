@@ -206,7 +206,7 @@ class Crud {
 	}
 	
 	
-	// Função para listar associaçoes
+	// Função para listar associados
 	function getAssociados($iFK_Assoc) {
 		try {
 			$oResult = $this->oCon->query(" SELECT 	TOP 10 
@@ -247,7 +247,7 @@ class Crud {
 	}
 
 
-	// Função para atualizar associações
+	// Função para atualizar associados
 	function updateAssociados($aUpdateAssociados) {
 		try {
 			$oUpdateAssociados = $this->oCon->prepare(" UPDATE TB_Clientes 
@@ -353,13 +353,39 @@ class Crud {
 	
 	
 	
-	// Função para listar associaçoes
+	// Função para listar conveniadas
 	function getConveniadas() {
 		try {
 			$oResult = $this->oCon->query(" SELECT 	TOP 10 
 													PK_Codigo, 
-													Nome AS Nome, 
-													IsNull(Logotipo, '') AS Logotipo
+													IsNull(Logotipo, '') AS Logotipo,
+													Razao, Nome,
+													CNPJ, Insc_Est, 
+													Email, Site, 
+													Bco, Ag, Cta, 
+													Bco2, Ag2, Cta2, 
+													Endereco, Bairro, Cep, Cidade, FK_UF, 
+													Fone, Fax, Celular, 
+													FK_Segmento, 
+													Condicoes, 
+													IsNull(Bloq, Cast('0' AS bit)) AS Bloq, 
+													Motivo, 
+													IsNull(OptInNews, Cast('0' AS bit)) AS OptInNews, 																Alt=Cast('0' as Bit), 
+													FK_Grupo, 
+													Contato, Fone_Contato, 
+													Dt_Cadastro, 
+													Tx_Adm_CDC, 
+													IsNull(Loja_Assoc, Cast('0' AS bit) AS Loja_Assoc, 
+													Pessoa, 
+													Nro_Contrato, Data_Contrato, Consultor, 
+													Valor_Contrato, Anuidade_Contrato, Forma_Pgto, 
+													Data_Pgto1, Valor_Pgto1, Situacao_Pg1, 
+													Data_Pgto2, Valor_Pgto2, Situacao_Pg2, 
+													Data_Pgto3, Valor_Pgto3, Situacao_Pg3, 
+													TEF, TEF_Observacao, TEF_Data_Inst,
+													POS_Modelo, POS_Serial, POS_Data_Inst, 
+													POS_Valor, POS_Mensal, POS_Condicao, POS_Data_Mensal1, 
+													Latitude, Longitude
 											FROM TB_Conveniadas 
 											ORDER BY TB_Conveniadas.Nome ASC "); 
 
@@ -379,7 +405,7 @@ class Crud {
 	
 	
 	
-	
+	// Função para atualizar conveniadas	
 	function updateConveniadas($aUpdateConveniadas) {
 		try {
 			$oUpdateConveniadas = $this->oCon->prepare(" UPDATE TB_Conveniadas 
