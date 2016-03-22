@@ -488,7 +488,7 @@
 				var pager_selector = "#grid-pager";
 			
 				jQuery(grid_selector).jqGrid({
-					url:'http://104.236.0.195/crud_associado.php', // link para buscar os dados de conexão
+					url:'http://104.236.0.195/crud_associado.php?FK_Assoc=123', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
 					colNames:['Nome','Matricula','Fone'],

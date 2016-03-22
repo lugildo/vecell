@@ -4,7 +4,7 @@ if ($_GET) {
 	include_once('class.crud.php');
 
 	$oCrud = new Crud();
-	$oAssociados = $oCrud->getAssociados();
+	$oAssociados = $oCrud->getAssociados($_GET['FK_Assoc']);
 	$i = 0;
 	foreach ( $oAssociados as $aAssociado ) { 
 		
