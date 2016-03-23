@@ -493,7 +493,7 @@
 					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link_da_Rede','Vetor_Secretarias','Clube_de_Descontos','Desconto_em_Folha','Feira','Fone_para_Agendamento_de_Feiras','Cartao_Automotivo','Bloqueio_Rede','Motivo','Bloqueio_Administrativo_da_Associacao','Bloqueio_de_Limites_de_Credito_de_Associados','Invisivel_no_Botao_Associacao_do_Perfil_da_Credenciada','Corte','Atualizacao_Saldo','Pagamento','Repasse_Rede','Envio_Documentacao','Endereco_de_Envio','Parcelamento_Maximo','Número_de_Parcelas_do_Limite_Credito_Parcelado'],
+					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link_da_Rede','Vetor_Secretarias','Clube_de_Descontos','Desconto_em_Folha','Feira','Fone_para_Agendamento_de_Feiras','Cartao_Automotivo','Bloqueio_Rede','Motivo','Bloqueio_Administrativo_da_Associacao','Bloqueio_de_Limites_de_Credito_de_Associados','Invisivel_no_Botao_Associacao_do_Perfil_da_Credenciada','Corte','Atualizacao_Saldo','Pagamento','Repasse_Rede','Envio_Documentacao','Endereco_de_Envio','Parcelamento_Maximo','Número_de_Parcelas_do_Limite_Credito_Parcelado','Adm','Bonus','Mensalidade','TUC','Consultor','FK_Consultor','Nro_Contrato','Data_Contrato','Dt_Cadastro'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
 						formoptions: {
@@ -852,6 +852,69 @@
                             colpos: 2, // the position of the column
                             rowpos: 30, // the position of the row
                             label: "Número de Parcelas do Limite de Crédito Parcelado: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Adm',index:'Adm', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 31, // the position of the row
+                            label: "% Adm: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Bonus',index:'Bonus', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 31, // the position of the row
+                            label: "% Bônus: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Mensalidade',index:'Mensalidade', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 32, // the position of the row
+                            label: "Mensalidade: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'TUC',index:'TUC', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 32, // the position of the row
+                            label: "TAUC: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Consultor',index:'Consultor', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 33, // the position of the row
+                            label: "Consultor: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'FK_Consultor',index:'FK_Consultor', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 33, // the position of the row
+                            label: "Link Consultor: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Nro_Contrato',index:'Nro_Contrato', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 34, // the position of the row
+                            label: "No. Contrato: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Data_Contrato',index:'Data_Contrato', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 34, // the position of the row
+                            label: "Dt. Contrato: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Dt_Cadastro',index:'Dt_Cadastro', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 35, // the position of the row
+                            label: "Cadastrado em: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }}
 // Fim das alterações
