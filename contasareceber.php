@@ -481,7 +481,7 @@
 				<script type="text/javascript">
 					var grid_data = 
 					[ 
-						{id:"1",nome:"AFUF",obs:"% ADM",status:"Yes",formapgto:"BOLETO", datavenc:"10/11/2015", datafesta:"03/12/2015", valor:"4.800,00"}
+						{id:"1",nome:"Paulo Costa",obs:" ",status:"No",formarec:"BANCO", datavenc:"03/12/2015", centrocusto:"Carteira 123", classifica:"TUC", valor:"450,00", datarec:"03/12/2015", valorrec:"450,00"}
 					];	
 			
 					jQuery(function($) {
@@ -494,15 +494,18 @@
 							data: grid_data,
 							datatype: "local",
 							height: 250,
-							colNames:['Data Venc.', 'Valor', 'Cliente', 'Data fechamento', 'Forma Rec','Obs', 'Pago'],
+							colNames:['Data Venc.', 'Valor', 'Cliente', 'Centro de custo', 'Classificação', 'Forma Pgto','Obs', 'Recebido', 'Data Rec.', 'Valor Rec.'],
 							colModel:[
-								{name:'datavenc',index:'datavenc',width:90, editable:true, sorttype:"date",unformat: pickDate},
-								{name:'valor',index:'valor', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
+								{name:'datavenc',index:'datavenc',width:150, editable:true, sorttype:"date",unformat: pickDate},
+								{name:'valor',index:'valor', width:100,editable: true,editoptions:{size:"20",maxlength:"30"}},
 								{name:'nome',index:'nome', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-								{name:'datafesta',index:'datafesta',width:90, editable:true, sorttype:"date",unformat: pickDate},
-								{name:'formapgto',index:'formapgto', width:90, editable: true,edittype:"select",editoptions:{value:"BC:BANCO;DN:DINHEIRO;CT:CARTÃO;CH:CHEQUE;BL:BOLETO"}},
-								{name:'obs', index:'obs', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
-								{name:'status',index:'status', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch} 
+								{name:'centrocusto',index:'centrocusto', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
+								{name:'classifica',index:'classifica', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
+								{name:'formarec',index:'formarec', width:90, editable: true,edittype:"select",editoptions:{value:"BC:BANCO;DN:DINHEIRO;CH:CHEQUE"}},
+								{name:'obs',index:'obs', width:100, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
+								{name:'status',index:'status', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch}, 
+								{name:'datarec',index:'datarec',width:150, editable:true, sorttype:"date",unformat: pickDate}, 
+								{name:'valorrec',index:'valorrec', width:100,editable: true,editoptions:{size:"20",maxlength:"30"}}
 							], 
 			
 							viewrecords : true,

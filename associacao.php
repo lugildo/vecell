@@ -781,21 +781,23 @@
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 24, // the position of the row
-                            label: "Bloqueio Administrativo da Associação" // the label to show for each input control                    
+                            label: "Bloqueio Adm. da Associação" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Bloq_Limite',index:'Bloq_Limite', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 25, // the position of the row
-                            label: "Bloqueio dos Limites de Crédito dos Associados" // the label to show for each input control                    
+                            label: "Bloqueio Lim. Cred.",
+							title: "Bloqueio dos Limites de Crédito dos Associados" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Invisivel_Btn_Ass',index:'Invisivel_Btn_Ass', width:90,hidden:true, editable: true, formatter:'checkbox', edittype:'checkbox', stype:'select', editrules: {edithidden:true} ,editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 26, // the position of the row
-                            label: "Invisível no Botão Associação do Perfil da Credenciada" // the label to show for each input control                    
+                            label: "Ocultar botão Perfil Cred.", // the label to show for each input control 
+						    title: "Invisível no Botão Associação do Perfil da Credenciada"                   
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dia_relatorio',index:'Dia_relatorio', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -851,7 +853,7 @@
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 30, // the position of the row
-                            label: "Número de Parcelas do Limite de Crédito Parcelado: " // the label to show for each input control                    
+                            label: "Nr Parc. Limi. Crédito Parc.: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Adm',index:'Adm', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -930,7 +932,7 @@
 					        loadonce: true,
 					        pager: pager_selector,
 					        rowNum: 10,
-					        rowList: [5, 10, 20, 50],
+					        rowList: [5, 10, 20, 50, 100, 200],
 					        //sortname: 'UserId',
 					        //sortorder: "asc",
 					        viewrecords: true,
@@ -1011,7 +1013,7 @@
 						//edit record form
 						//closeAfterEdit: true,
 						height: 'auto',
-                    	width: 800,
+                    	width: 1024,
 						editCaption: "Alterar dados da associação",
 						recreateForm: true,
 						beforeShowForm : function(e) {

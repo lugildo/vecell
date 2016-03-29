@@ -481,7 +481,7 @@
 				<script type="text/javascript">
 					var grid_data = 
 					[ 
-						{id:"1",nome:"CEEE",obs:" ",status:"No",formapgto:"BANCO", datavenc:"03/12/2015", produtoservico:"Despesa Fixa", valor:"450,00"}
+						{id:"1",nome:"CEEE",obs:" ",status:"No",formapgto:"BANCO", datavenc:"03/12/2015", produtoservico:"Despesa Fixa", classifica:"Energia Elétrica", valor:"450,00", datapgto:"03/12/2015", valorpgto:"450,00"}
 					];	
 			
 					jQuery(function($) {
@@ -494,15 +494,18 @@
 							data: grid_data,
 							datatype: "local",
 							height: 250,
-							colNames:['Data Venc.', 'Valor', 'Favorecido', 'Centro de custo', 'Forma Pgto','Obs', 'Pago'],
+							colNames:['Data Venc.', 'Valor', 'Favorecido', 'Centro de custo', 'Classificação', 'Forma Pgto','Obs', 'Pago', 'Data Pgto.', 'Valor Pgto.'],
 							colModel:[
 								{name:'datavenc',index:'datavenc',width:90, editable:true, sorttype:"date",unformat: pickDate},
 								{name:'valor',index:'valor', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
 								{name:'nome',index:'nome', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
 								{name:'produtoservico',index:'produtoservico', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
+								{name:'classifica',index:'classifica', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
 								{name:'formapgto',index:'formapgto', width:90, editable: true,edittype:"select",editoptions:{value:"BC:BANCO;DN:DINHEIRO;CH:CHEQUE"}},
 								{name:'obs',index:'obs', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
-								{name:'status',index:'status', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch}
+								{name:'status',index:'status', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch}, 
+								{name:'datapgto',index:'datapgto',width:90, editable:true, sorttype:"date",unformat: pickDate}, 
+								{name:'valorpgto',index:'valorpgto', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}}
 							], 
 			
 							viewrecords : true,
