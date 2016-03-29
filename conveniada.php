@@ -1,3 +1,7 @@
+<?php
+	zray_disable(true);//desativa o servidor zend
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -684,6 +688,9 @@
 					{
 						//edit record form
 						//closeAfterEdit: true,
+
+						height: 'auto',
+                    	width: 1024,
 						recreateForm: true,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);

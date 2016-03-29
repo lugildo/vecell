@@ -356,8 +356,7 @@ class Crud {
 	// Função para listar conveniadas
 	function getConveniadas() {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	TOP 10 
-													PK_Codigo, 
+			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, 
 													IsNull(Logotipo, '') AS Logotipo,
 													Razao, Nome,
 													CNPJ, Insc_Est, 
@@ -375,7 +374,7 @@ class Crud {
 													Contato, Fone_Contato, 
 													Dt_Cadastro, 
 													Tx_Adm_CDC, 
-													IsNull(Loja_Assoc, Cast('0' AS bit) AS Loja_Assoc, 
+													IsNull(Loja_Assoc, Cast('0' AS bit)) AS Loja_Assoc, 
 													Pessoa, 
 													Nro_Contrato, Data_Contrato, Consultor, 
 													Valor_Contrato, Anuidade_Contrato, Forma_Pgto, 
