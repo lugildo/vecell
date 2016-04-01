@@ -495,25 +495,24 @@
 					url:'http://104.236.0.195/crud_conveniada.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Nome','Razao','Logotipo','E-mail','CNPJ','Insc_Est','Endereco','Bairro','CEP','Cidade','FK_UF','Site','Email','Fone','Fax','Celular','Ag','Cta','Ag2','Cta2','Condicoes','Bloq','Motivo','OptInNews','Loja_Assoc','Data_Pgto1','Valor_Pgto1','Situacao_Pg1','Data_Pgto2','Valor_Pgto2','Situacao_Pg2','Data_Pgto3','Valor_Pgto3','Situacao_Pg3','Latitude','Longitude','Dt_Cadastro'],
+					colNames:['Código','Nome','Razao','Logotipo','E-mail','CNPJ','Insc_Est','Endereco','Bairro','CEP','Cidade','FK_UF','Site','Email','Fone','Fax','Celular','Ag','Cta','Ag2','Cta2','Condicoes','Bloq','Motivo','OptInNews','Loja_Assoc','Forma_Pgto','Data_Pgto1','Valor_Pgto1','Situacao_Pg1','Data_Pgto2','Valor_Pgto2','Situacao_Pg2','Data_Pgto3','Valor_Pgto3','Situacao_Pg3','Contato','Fone_Contato','Latitude','Longitude','Pessoa','Dt_Cadastro'],
 /*
 Tabelas Auxiliares:
+-------------
 Bco
 Bco2
 FK_Segmento
 FK_Grupo
 -------------
-//Alt
 
-'Contato','Fone_Contato'
+Alt   //desabilitado
+
 Tx_Adm_CDC
-Pessoa        Fisica ou Juridica
 Nro_Contrato
 Data_Contrato
 Consultor
 Valor_Contrato
 Anuidade_Contrato
-Forma_Pgto
 
 TEF
 TEF_Observacao
@@ -526,6 +525,7 @@ POS_Valor
 POS_Mensal
 POS_Condicao
 POS_Data_Mensal1
+// CHECK BOX {name:'visit', index:'visit', editable:true, formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"}, searchoptions:sopt:['eq']} }
 */
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
@@ -682,8 +682,7 @@ POS_Data_Mensal1
                             label: "Condições: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-				//flag
-						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true,editrules: {edithidden:true},formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
@@ -697,20 +696,25 @@ POS_Data_Mensal1
                             label: "Motivo do Bloqueio: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-//flag
-						{name:'OptInNews',index:'OptInNews', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'OptInNews',index:'OptInNews', width:90,hidden:true, editable: true, editrules: {edithidden:true},formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
                             label: "Aceito receber as Promoções" // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-//flag
-						{name:'Loja_Assoc',index:'Loja_Assoc', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						{name:'Loja_Assoc',index:'Loja_Assoc', width:90,hidden:true, editable: true, editrules: {edithidden:true},formatter:'checkbox', edittype:'checkbox', stype:'select', editoptions:{value:"1:0"},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
                             label: "Loja da Associação" // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Forma_Pgto',index:'Forma_Pgto', width:90,hidden:true, editable: true, editrules: {edithidden:true},edittype:'select', editoptions:{value:{1:'Dinheiro',2:'Cheque',3:'Doc'}}
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Forma de Pagamento: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Data_Pgto1',index:'Data_Pgto1', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -776,6 +780,20 @@ POS_Data_Mensal1
                             label: "Situação: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
+						{name:'Contato',index:'Contato', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Contato: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Fone_Contato',index:'Fone_Contato', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Fone do Contato: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
 						{name:'Latitude',index:'Latitude', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 2, // the position of the column
@@ -788,6 +806,13 @@ POS_Data_Mensal1
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
                             label: "Longitude: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Pessoa',index:'Pessoa', width:90,hidden:true, editable: true, editrules: {edithidden:true},edittype:'select', editoptions:{value:{0:'PJ',1:'PF'}},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Pessoa: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dt_Cadastro',index:'Dt_Cadastro', width:90,hidden:true, editable: false, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
