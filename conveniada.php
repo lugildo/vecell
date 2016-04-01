@@ -495,7 +495,38 @@
 					url:'http://104.236.0.195/crud_conveniada.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Nome','E-mail','CNPJ','Endereco','Bairro','CEP','Cidade','FK_UF','Site','Email','Fone','Fax','Celular','Ag','Cta','Dt_Cadastro'],
+					colNames:['Código','Nome','Razao','Logotipo','E-mail','CNPJ','Insc_Est','Endereco','Bairro','CEP','Cidade','FK_UF','Site','Email','Fone','Fax','Celular','Ag','Cta','Ag2','Cta2','Condicoes','Bloq','Motivo','OptInNews','Loja_Assoc','Data_Pgto1','Valor_Pgto1','Situacao_Pg1','Data_Pgto2','Valor_Pgto2','Situacao_Pg2','Data_Pgto3','Valor_Pgto3','Situacao_Pg3','Latitude','Longitude','Dt_Cadastro'],
+/*
+Tabelas Auxiliares:
+Bco
+Bco2
+FK_Segmento
+FK_Grupo
+-------------
+//Alt
+
+'Contato','Fone_Contato'
+Tx_Adm_CDC
+Pessoa        Fisica ou Juridica
+Nro_Contrato
+Data_Contrato
+Consultor
+Valor_Contrato
+Anuidade_Contrato
+Forma_Pgto
+
+TEF
+TEF_Observacao
+TEF_Data_Inst
+
+POS_Modelo
+POS_Serial
+POS_Data_Inst
+POS_Valor
+POS_Mensal
+POS_Condicao
+POS_Data_Mensal1
+*/
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
 						formoptions: {
@@ -508,7 +539,21 @@
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 1, // the position of the row
-                            label: "Nome: " // the label to show for each input control                    
+                            label: "Nome Fantasia: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Razao',index:'Razao',width:90, editable:true,editoptions:{size:"40",maxlength:"150"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 1, // the position of the row
+                            label: "Razão Social: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Logotipo',index:'Logotipo',width:90, editable:true,editoptions:{size:"40",maxlength:"150"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 1, // the position of the row
+                            label: "Logotipo: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Email',index:'Email', width:90, editable: true,editoptions:{size:"40",maxlength:"90"},
@@ -523,6 +568,13 @@
                             colpos: 1, // the position of the column
                             rowpos: 3, // the position of the row
                             label: "CNPJ: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Insc_Est',index:'Insc_Est', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 3, // the position of the row
+                            label: "Inscrição Estadual: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Endereco',index:'Endereco', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
@@ -599,7 +651,7 @@
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 9, // the position of the row
-                            label: "Ag: " // the label to show for each input control                    
+                            label: "Agência: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Cta',index:'Cta', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -607,6 +659,135 @@
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
                             label: "Conta: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Ag2',index:'Ag2', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"10",maxlength:"90"},
+						formoptions: {
+                            colpos: 1, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Agência 2: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Cta2',index:'Cta2', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Conta 2: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Condicoes',index:'Condicoes', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Condições: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+				//flag
+						{name:'Bloq',index:'Bloq', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Bloqueio" // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Motivo',index:'Motivo', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Motivo do Bloqueio: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+//flag
+						{name:'OptInNews',index:'OptInNews', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Aceito receber as Promoções" // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+//flag
+						{name:'Loja_Assoc',index:'Loja_Assoc', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Loja da Associação" // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Data_Pgto1',index:'Data_Pgto1', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Data: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Valor_Pgto1',index:'Valor_Pgto1', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Valor: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Situacao_Pg1',index:'Situacao_Pg1', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Situação: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Data_Pgto2',index:'Data_Pgto2', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Data: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Valor_Pgto2',index:'Valor_Pgto2', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Valor: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Situacao_Pg2',index:'Situacao_Pg2', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Situação: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Data_Pgto3',index:'Data_Pgto3', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Data: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Valor_Pgto3',index:'Valor_Pgto3', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Valor: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Situacao_Pg3',index:'Situacao_Pg3', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Situação: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Latitude',index:'Latitude', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Latitude: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Longitude',index:'Longitude', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 9, // the position of the row
+                            label: "Longitude: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Dt_Cadastro',index:'Dt_Cadastro', width:90,hidden:true, editable: false, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
