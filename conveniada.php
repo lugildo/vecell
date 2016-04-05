@@ -730,7 +730,7 @@ Alt   //desabilitado
                             label: "Anuidade: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Forma_Pgto',index:'Forma_Pgto', width:90,hidden:true, editable: true, editrules: {edithidden:true},edittype:'select', editoptions:{value:{1:'Dinheiro',2:'Cheque',3:'Doc'}}
+						{name:'Forma_Pgto',index:'Forma_Pgto', width:90,hidden:true, editable: true, editrules: {edithidden:true},edittype:'select', editoptions:{value:{1:'Dinheiro',2:'Cheque',3:'Doc'}},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
@@ -818,7 +818,7 @@ Alt   //desabilitado
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
-                            label: TEF: " // the label to show for each input control                    
+                            label: "TEF: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'TEF_Data_Inst',index:'TEF_Data_Inst', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -905,7 +905,7 @@ Alt   //desabilitado
                             label: "Pessoa: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Tx_Adm_CDC',index:'Tx_Adm_CDC', width:90,hidden:true, editable: true, editrules: {edithidden:true},edittype:'select', editoptions:{value:{0:'PJ',1:'PF'}},
+						{name:'Tx_Adm_CDC',index:'Tx_Adm_CDC', width:90,hidden:true, editable: true, editrules: {edithidden:true},editoptions:{size:"20",maxlength:"90"},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 9, // the position of the row
@@ -1003,6 +1003,8 @@ Alt   //desabilitado
 					},
 					{
 						//new record form
+						height: 'auto',
+                    	width: 1024,
 						closeAfterAdd: true,
 						recreateForm: true,
 						viewPagerButtons: false,

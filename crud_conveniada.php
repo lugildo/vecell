@@ -71,9 +71,11 @@ if ($_GET) {
 		$oConveniadas[$i]->POS_Data_Mensal1		= utf8_encode($oConveniadas[$i]->POS_Data_Mensal1);
 		$oConveniadas[$i]->Latitude				= utf8_encode($oConveniadas[$i]->Latitude);
 		$oConveniadas[$i]->Longitude			= utf8_encode($oConveniadas[$i]->Longitude);
+		$oConveniadas[$i]->Banco1			    = utf8_encode($oConveniadas[$i]->Banco1);
+		$oConveniadas[$i]->Banco2			    = utf8_encode($oConveniadas[$i]->Banco2);
 
 		$i++;
-
+ 
 	}	
 	echo json_encode($oConveniadas);
 }

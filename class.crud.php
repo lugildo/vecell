@@ -356,9 +356,9 @@ class Crud {
 	// Função para listar conveniadas
 	function getConveniadas() {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, 
+			$oResult = $this->oCon->query(" SELECT 	TB_Conveniadas.PK_Codigo, 
 													IsNull(Logotipo, '') AS Logotipo,
-													Razao, Nome,
+													Razao, TB_Conveniadas.Nome,
 													CNPJ, Insc_Est, 
 													Email, Site, 
 													Bco, Ag, Cta, 
@@ -384,9 +384,12 @@ class Crud {
 													TEF, TEF_Observacao, TEF_Data_Inst,
 													POS_Modelo, POS_Serial, POS_Data_Inst, 
 													POS_Valor, POS_Mensal, POS_Condicao, POS_Data_Mensal1, 
-													Latitude, Longitude
-											FROM TB_Conveniadas 
-											ORDER BY TB_Conveniadas.Nome ASC "); 
+													Latitude, Longitude,
+													a.Nome as Banco1, b.Nome as Banco2
+											  FROM  TB_Conveniadas 
+											  LEFT JOIN TB_Bancos As a ON (a.PK_Codigo = TB_Conveniadas.Bco)
+											  LEFT JOIN TB_Bancos As b ON (b.PK_Codigo = TB_Conveniadas.Bco2)
+											 ORDER BY TB_Conveniadas.Nome ASC "); 
 
 											  
 			if($oResult)
@@ -538,10 +541,71 @@ class Crud {
 	}
 	
 	
+	// Função para buscar bancos	
+	function getBancos($iKey) {
+		try {
+			$oBancos = $this->oCon->prepare(" SELECT PK_Codigo,
+				 									 Nome
+				                                FROM TB_Bancos 
+			                                   WHERE PK_Codigo = $iKey ");
+			
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return true;
+	}
 	
 	
+	// Função para buscar estados	
+	function getEstados($sKey) {
+		try {
+			$oEstados = $this->oCon->prepare(" SELECT PK_Sigla,
+				 									  Nome
+				                                 FROM TB_Estados 
+			                                    WHERE PK_Sigla = '".$sKey."' ");
+			
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return true;
+	}
 	
-	// Função para inserir centro de custo
+	// Função para buscar segmentos	
+	function getSegmentos($sKey) {
+		try {
+			$oSegmentos = $this->oCon->prepare(" SELECT PK_Codigo,
+				 									    Segmento,
+													 	Icone
+				                                   FROM TB_Segmentos 
+			                                      WHERE PK_Codigo = '".$sKey."' ");
+			
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return true;
+	}
+	
+	
+	// Função para buscar grupos	
+	function getGrupos($sKey) {
+		try {
+			$oGrupos = $this->oCon->prepare(" SELECT PK_Codigo,
+				 									    Segmento,
+													 	Icone
+				                                   FROM TB_Grupos 
+			                                      WHERE PK_Codigo = '".$sKey."' ");
+			
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return true;
+	}
+	
+	// Função 
 	function insertCentroCusto($aInsertCentroCusto) {
 		try {
 			$oInsertCentroCusto = $this->oCon->prepare(" INSERT INTO centrodecusto 
