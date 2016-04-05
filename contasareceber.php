@@ -1,3 +1,7 @@
+<?php
+	zray_disable(true);//desativa o servidor zend
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -132,8 +136,6 @@
 								</li>
 							</ul>
 						</li>
-
-						
 
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">

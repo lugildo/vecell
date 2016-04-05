@@ -1,3 +1,7 @@
+<?php
+	zray_disable(true);//desativa o servidor zend
+	
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
