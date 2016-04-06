@@ -209,8 +209,7 @@ class Crud {
 	// Função para listar associados
 	function getAssociados($iFK_Assoc) {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	TOP 10 
-													PK_Matricula, FK_Assoc, 
+			$oResult = $this->oCon->query(" SELECT 	PK_Matricula, FK_Assoc, 
 			                                        Nome, Lim_Credito, Bloq, Motivo,
 			                                        Endereco, Bairro, CEP, Cidade, FK_UF,
 													Fone, Celular, Email, Email2, OptInNews, 
@@ -227,7 +226,6 @@ class Crud {
 													Dt_Plano_Sta_Casa, Plano_Santa_Casa,
 													Dt_Angelus, Angelus,
 													Dt_Clube_Desc, Clube_Descontos
-
 											  FROM 	TB_Clientes 
 											  WHERE FK_Assoc = $iFK_Assoc"); 
 
