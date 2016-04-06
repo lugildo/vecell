@@ -356,40 +356,47 @@ class Crud {
 	// Função para listar conveniadas
 	function getConveniadas() {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	TB_Conveniadas.PK_Codigo, 
-													IsNull(Logotipo, '') AS Logotipo,
-													Razao, TB_Conveniadas.Nome,
-													CNPJ, Insc_Est, 
-													Email, Site, 
-													Bco, Ag, Cta, 
-													Bco2, Ag2, Cta2, 
-													Endereco, Bairro, Cep, Cidade, FK_UF, 
-													Fone, Fax, Celular, 
-													FK_Segmento, 
-													Condicoes, 
-													IsNull(Bloq, Cast('0' AS bit)) AS Bloq, 
-													Motivo, 
-													IsNull(OptInNews, Cast('0' AS bit)) AS OptInNews, 																Alt=Cast('0' as Bit), 
-													FK_Grupo, 
-													Contato, Fone_Contato, 
-													Dt_Cadastro, 
-													Tx_Adm_CDC, 
-													IsNull(Loja_Assoc, Cast('0' AS bit)) AS Loja_Assoc, 
-													Pessoa, 
-													Nro_Contrato, Data_Contrato, Consultor, 
-													Valor_Contrato, Anuidade_Contrato, Forma_Pgto, 
-													Data_Pgto1, Valor_Pgto1, Situacao_Pg1, 
-													Data_Pgto2, Valor_Pgto2, Situacao_Pg2, 
-													Data_Pgto3, Valor_Pgto3, Situacao_Pg3, 
-													TEF, TEF_Observacao, TEF_Data_Inst,
-													POS_Modelo, POS_Serial, POS_Data_Inst, 
-													POS_Valor, POS_Mensal, POS_Condicao, POS_Data_Mensal1, 
-													Latitude, Longitude,
-													a.Nome as Banco1, b.Nome as Banco2
-											  FROM  TB_Conveniadas 
-											  LEFT JOIN TB_Bancos As a ON (a.PK_Codigo = TB_Conveniadas.Bco)
-											  LEFT JOIN TB_Bancos As b ON (b.PK_Codigo = TB_Conveniadas.Bco2)
-											 ORDER BY TB_Conveniadas.Nome ASC "); 
+			$oResult = $this->oCon->query(" SELECT 	z.PK_Codigo, 
+													IsNull(z.Logotipo, '') AS Logotipo,
+													z.Razao, z.Nome,
+													z.CNPJ, z.Insc_Est, 
+													z.Email, z.Site, 
+													z.Bco, z.Ag, z.Cta, 
+													z.Bco2, z.Ag2, z.Cta2, 
+													z.Endereco, z.Bairro, z.Cep, z.Cidade, z.FK_UF, 
+													z.Fone, z.Fax, z.Celular, 
+													z.FK_Segmento, 
+													z.Condicoes, 
+													IsNull(z.Bloq, Cast('0' AS bit)) AS Bloq, 
+													z.Motivo, 
+													IsNull(z.OptInNews, Cast('0' AS bit)) AS OptInNews, 																Alt=Cast('0' as Bit), 
+													z.FK_Grupo, 
+													z.Contato, z.Fone_Contato, 
+													z.Dt_Cadastro, 
+													z.Tx_Adm_CDC, 
+													IsNull(z.Loja_Assoc, Cast('0' AS bit)) AS Loja_Assoc, 
+													z.Pessoa, 
+													z.Nro_Contrato, z.Data_Contrato, z.Consultor, 
+													z.Valor_Contrato, z.Anuidade_Contrato, z.Forma_Pgto, 
+													z.Data_Pgto1, z.Valor_Pgto1, z.Situacao_Pg1, 
+													z.Data_Pgto2, z.Valor_Pgto2, z.Situacao_Pg2, 
+													z.Data_Pgto3, z.Valor_Pgto3, z.Situacao_Pg3, 
+													z.TEF, z.TEF_Observacao, z.TEF_Data_Inst,
+													z.POS_Modelo, z.POS_Serial, z.POS_Data_Inst, 
+													z.POS_Valor, z.POS_Mensal, z.POS_Condicao, z.POS_Data_Mensal1, 
+													z.Latitude, z.Longitude,
+													a.Nome as Banco1, b.Nome as Banco2,
+													c.Segmento, c.Icone,
+													d.Nome as Estado,
+													e.Nome as Grupo, f.Nome as BancoGrupo, e.Ag as AgGrupo, e.Cta as CtaGrupo, e.Contato as ContatoGrupo, e.Fone as FoneGrupo, e.Email as EmailGrupo
+											  FROM  TB_Conveniadas as z
+											  LEFT  JOIN TB_Bancos    As a ON (a.PK_Codigo = z.Bco)
+											  LEFT  JOIN TB_Bancos    As b ON (b.PK_Codigo = z.Bco2)
+											 INNER  JOIN TB_Segmentos As c ON (c.PK_Codigo = z.FK_Segmento)
+											 INNER  JOIN TB_Estados   As d ON (d.PK_Sigla  = z.FK_UF)
+											  LEFT  JOIN TB_Grupos    As e ON (e.PK_Codigo = z.FK_Grupo)
+											  LEFT  JOIN TB_Bancos    AS f ON (f.PK_Codigo = e.Bco)
+											 ORDER BY z.Nome ASC "); 
 
 											  
 			if($oResult)

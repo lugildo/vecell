@@ -72,7 +72,17 @@ if ($_GET) {
 		$oConveniadas[$i]->Latitude				= utf8_encode($oConveniadas[$i]->Latitude);
 		$oConveniadas[$i]->Longitude			= utf8_encode($oConveniadas[$i]->Longitude);
 		$oConveniadas[$i]->Banco1			    = utf8_encode($oConveniadas[$i]->Banco1);
-		$oConveniadas[$i]->Banco2			    = utf8_encode($oConveniadas[$i]->Banco2);
+		$oConveniadas[$i]->Banco2			    = utf8_encode($oConveniadas[$i]->Banco2);	
+		$oConveniadas[$i]->Segmento			    = utf8_encode($oConveniadas[$i]->Segmento);
+		$oConveniadas[$i]->Icone			    = utf8_encode($oConveniadas[$i]->Icone);
+		$oConveniadas[$i]->Estado			    = utf8_encode($oConveniadas[$i]->Estado);
+		$oConveniadas[$i]->Grupo			    = utf8_encode($oConveniadas[$i]->Grupo);
+		$oConveniadas[$i]->BancoGrupo			= utf8_encode($oConveniadas[$i]->BancoGrupo);
+		$oConveniadas[$i]->AgGrupo			    = utf8_encode($oConveniadas[$i]->AgGrupo);
+		$oConveniadas[$i]->CtaGrupo			    = utf8_encode($oConveniadas[$i]->CtaGrupo);
+		$oConveniadas[$i]->ContatoGrupo			= utf8_encode($oConveniadas[$i]->ContatoGrupo);
+		$oConveniadas[$i]->FoneGrupo			= utf8_encode($oConveniadas[$i]->FoneGrupo);
+		$oConveniadas[$i]->EmailGrupo			= utf8_encode($oConveniadas[$i]->EmailGrupo);
 
 		$i++;
  
