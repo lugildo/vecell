@@ -26,35 +26,41 @@ class Crud {
 	// Função para listar associaçoes
 	function getAssociacoes() {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	PK_Codigo, Sigla, Nome, 
-													CNPJ, Bco, Ag, Cta, 
-													Endereco, Bairro, CEP, Cidade, FK_UF, 
-													Site, Email, Fone, Fax, Celular, 
-													IsNull(Bloq, Cast('0' as Bit)) As Bloq, Motivo, 
-													IsNull(Bloq_Assoc, Cast('0' as Bit)) As Bloq_Assoc, 
-													IsNull(Bloq_Limite, Cast('0' as Bit)) As Bloq_Limite, 
-													Dia_Corte, Dia_relatorio, Dia_Pagto, Dia_Repasse, 
-													Dia_Envio, Endereco_Envio, 
-													Nome_Presid, RG_Presid, CPF_Presid, 
-													Nome_Vice, RG_Vice, CPF_Vice, 
-													Nome_Tes, RG_Tes, CPF_Tes, 
-													Nome_Contato, Fone_Contato, 
-													Contato_Adm, Fone_Adm, 
-													Contato_Fin, Fone_Fin, 
-													IsNull(Feira, Cast('0' as Bit)) As Feira, Fone_Feira, 
-													Link_Rede, VetorSecretarias,
-													Adm, Bonus, 
-													FK_Consultor, Consultor,
-													Mensalidade, TUC,
-													MaxParc, NPLCP,
-													Nro_Contrato, Data_Contrato, Dt_Cadastro, 
-													IsNull(Desc_Folha, Cast('0' as Bit)) As Desc_Folha, 
-													IsNull(Automotivo, Cast('0' as Bit)) As Automotivo,
-													IsNull(Desconto, Cast('0' as Bit)) As Desconto, 
-													IsNull(OptInNews, Cast('0' as Bit)) As OptInNews, 
-													IsNull(Invisivel_Btn_Ass, Cast('0' as Bit)) As Invisivel_Btn_Ass
-											FROM 	TB_Associacoes 
-											ORDER BY Sigla ASC" ); 
+			$oResult = $this->oCon->query(" SELECT 	z.PK_Codigo, z.Sigla, z.Nome, 
+													z.CNPJ, z.Bco, z.Ag, z.Cta, 
+													z.Endereco, z.Bairro, z.CEP, z.Cidade, z.FK_UF, 
+													z.Site, z.Email, z.Fone, z.Fax, z.Celular, 
+													IsNull(z.Bloq, Cast('0' as Bit)) As Bloq, Motivo, 
+													IsNull(z.Bloq_Assoc, Cast('0' as Bit)) As Bloq_Assoc, 
+													IsNull(z.Bloq_Limite, Cast('0' as Bit)) As Bloq_Limite, 
+													z.Dia_Corte, z.Dia_relatorio, z.Dia_Pagto, z.Dia_Repasse, 
+													z.Dia_Envio, z.Endereco_Envio, 
+													z.Nome_Presid, z.RG_Presid, z.CPF_Presid, 
+													z.Nome_Vice, z.RG_Vice, z.CPF_Vice, 
+													z.Nome_Tes, z.RG_Tes, z.CPF_Tes, 
+													z.Nome_Contato, z.Fone_Contato, 
+													z.Contato_Adm, z.Fone_Adm, 
+													z.Contato_Fin, z.Fone_Fin, 
+													IsNull(z.Feira, Cast('0' as Bit)) As Feira, z.Fone_Feira, 
+													z.Link_Rede, z.VetorSecretarias,
+													z.Adm, z.Bonus, 
+													z.FK_Consultor, z.Consultor,
+													z.Mensalidade, z.TUC,
+													z.MaxParc, z.NPLCP,
+													z.Nro_Contrato, z.Data_Contrato, z.Dt_Cadastro, 
+													IsNull(z.Desc_Folha, Cast('0' as Bit)) As Desc_Folha, 
+													IsNull(z.Automotivo, Cast('0' as Bit)) As Automotivo,
+													IsNull(z.Desconto, Cast('0' as Bit)) As Desconto, 
+													IsNull(z.OptInNews, Cast('0' as Bit)) As OptInNews, 
+													IsNull(z.Invisivel_Btn_Ass, Cast('0' as Bit)) As Invisivel_Btn_Ass,
+													a.Nome as Banco,
+													b.Nome as NomeConsultor, b.Email as EmailConsultor, b.FK_Usuario as UsuarioConsultor,
+													c.Nome as Estado
+											FROM 	TB_Associacoes As z
+										 LEFT  JOIN TB_Bancos      As a ON (a.PK_Codigo = z.Bco)
+										 LEFT  JOIN TB_Consultores As b ON (b.PK_Codigo = z.FK_Consultor)
+										INNER  JOIN TB_Estados     As c ON (c.PK_Sigla  = z.FK_UF)
+										   ORDER BY Sigla ASC" ); 
 										  
 			if($oResult)
 				{
@@ -209,24 +215,28 @@ class Crud {
 	// Função para listar associados
 	function getAssociados($iFK_Assoc) {
 		try {
-			$oResult = $this->oCon->query(" SELECT 	PK_Matricula, FK_Assoc, 
-			                                        Nome, Lim_Credito, Bloq, Motivo,
-			                                        Endereco, Bairro, CEP, Cidade, FK_UF,
-													Fone, Celular, Email, Email2, OptInNews, 
-													Cargo, Secretaria, 
-													RG, CPF, Bco, Ag, Cta,
-													Rescisao, Dt_Rescisao, 
-													Dt_Cadastro, Dt_Nasc,
-													Dt_Mensalidade, Mensalidade, 
-													Dt_Mensal_Cartao, Mensal_Cartao, 
-													Dt_Seguro, Seguro, Nome_Seguro, 
-													Dt_Assist_Jurid, Assist_Juridica, Nome_Ass_Jur, 
-													Dt_Colombo_Virt, Colombo_Virtual,
-													Dt_Extrato, Extrato,
-													Dt_Plano_Sta_Casa, Plano_Santa_Casa,
-													Dt_Angelus, Angelus,
-													Dt_Clube_Desc, Clube_Descontos
-											  FROM 	TB_Clientes 
+			$oResult = $this->oCon->query(" SELECT 	z.PK_Matricula, z.FK_Assoc, 
+			                                        z.Nome, z.Lim_Credito, z.Bloq, z.Motivo,
+			                                        z.Endereco, z.Bairro, z.CEP, z.Cidade, z.FK_UF,
+													z.Fone, z.Celular, z.Email, z.Email2, z.OptInNews, 
+													z.Cargo, z.Secretaria, 
+													z.RG, z.CPF, z.Bco, z.Ag, z.Cta,
+													z.Rescisao, z.Dt_Rescisao, 
+													z.Dt_Cadastro, z.Dt_Nasc,
+													z.Dt_Mensalidade, z.Mensalidade, 
+													z.Dt_Mensal_Cartao, z.Mensal_Cartao, 
+													z.Dt_Seguro, z.Seguro, z.Nome_Seguro, 
+													z.Dt_Assist_Jurid, z.Assist_Juridica, z.Nome_Ass_Jur, 
+													z.Dt_Colombo_Virt, z.Colombo_Virtual,
+													z.Dt_Extrato, z.Extrato,
+													z.Dt_Plano_Sta_Casa, z.Plano_Santa_Casa,
+													z.Dt_Angelus, z.Angelus,
+													z.Dt_Clube_Desc, z.Clube_Descontos
+													a.Nome as Banco,
+													b.Nome as Estado
+											FROM 	TB_Clientes As z 
+										 LEFT  JOIN TB_Bancos   As a ON (a.PK_Codigo = z.Bco)
+										INNER  JOIN TB_Estados  As b ON (b.PK_Sigla  = z.FK_UF)
 											  WHERE FK_Assoc = $iFK_Assoc"); 
 
 
@@ -609,6 +619,25 @@ class Crud {
 
 		return true;
 	}
+
+	
+	// Função para buscar consultores	
+	function getConsultores($sKey) {
+		try {
+			$oConsultores = $this->oCon->prepare(" SELECT   PK_Codigo,
+															Nome,
+															Email,
+															FK_Usuario
+				                                      FROM  TB_Consultores 
+													WHERE   PK_Codigo = '".$sKey."' ");
+			
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return true;
+	}
+	
 	
 	// Função 
 	function insertCentroCusto($aInsertCentroCusto) {
