@@ -72,6 +72,12 @@ if ($_GET) {
 		$oAssociacoes[$i]->Desconto 			= utf8_encode($oAssociacoes[$i]->Desconto);
 		$oAssociacoes[$i]->OptInNews 			= utf8_encode($oAssociacoes[$i]->OptInNews);
 		$oAssociacoes[$i]->Invisivel_Btn_Ass	= utf8_encode($oAssociacoes[$i]->Invisivel_Btn_Ass);
+		$oAssociacoes[$i]->Banco				= utf8_encode($oAssociacoes[$i]->Banco);
+		$oAssociacoes[$i]->NomeConsultor		= utf8_encode($oAssociacoes[$i]->NomeConsultor);
+		$oAssociacoes[$i]->EmailConsultor		= utf8_encode($oAssociacoes[$i]->EmailConsultor);
+		$oAssociacoes[$i]->UsuarioConsultor		= utf8_encode($oAssociacoes[$i]->UsuarioConsultor);
+		$oAssociacoes[$i]->Estado				= utf8_encode($oAssociacoes[$i]->Estado);
+		
 		$i++;
 
 	}	

@@ -55,6 +55,9 @@ if ($_GET) {
 		$oAssociados[$i]->Angelus 				= utf8_encode($oAssociados[$i]->Angelus);
 		$oAssociados[$i]->Dt_Clube_Desc 		= utf8_encode($oAssociados[$i]->Dt_Clube_Desc);
 		$oAssociados[$i]->Clube_Descontos 		= utf8_encode($oAssociados[$i]->Clube_Descontos);
+		$oAssociados[$i]->Banco 				= utf8_encode($oAssociados[$i]->Banco);
+		$oAssociados[$i]->Estado 				= utf8_encode($oAssociados[$i]->Estado);
+		
 		$i++;
 
 	}	
