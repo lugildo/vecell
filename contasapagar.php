@@ -483,33 +483,94 @@
 
 				<!-- inline scripts related to this page -->
 				<script type="text/javascript">
-					var grid_data = 
-					[ 
-						{id:"1",nome:"CEEE",obs:" ",status:"No",formapgto:"BANCO", datavenc:"03/12/2015", produtoservico:"Despesa Fixa", classifica:"Energia Elétrica", valor:"450,00", datapgto:"03/12/2015", valorpgto:"450,00"}
-					];	
 			
 					jQuery(function($) {
 						var grid_selector = "#grid-table";
 						var pager_selector = "#grid-pager";
 			
 						jQuery(grid_selector).jqGrid({
-							//direction: "rtl",
-					
-							data: grid_data,
-							datatype: "local",
+							url:'http://104.236.0.195/crud_contasapagar.php', // link para buscar os dados de conexão
+							datatype: "json",
 							height: 250,
-							colNames:['Data Venc.', 'Valor', 'Favorecido', 'Centro de custo', 'Classificação', 'Forma Pgto','Obs', 'Pago', 'Data Pgto.', 'Valor Pgto.'],
+							colNames:['ID', 'Data Venc.','Favorecido', 'Valor',  'Centro de custo', 'Classificação', 'Forma Pgto','Obs', 'Pago', 'Data Pgto.', 'Valor Pgto.'],
 							colModel:[
-								{name:'datavenc',index:'datavenc',width:90, editable:true, sorttype:"date",unformat: pickDate},
-								{name:'valor',index:'valor', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-								{name:'nome',index:'nome', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-								{name:'produtoservico',index:'produtoservico', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-								{name:'classifica',index:'classifica', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}},
-								{name:'formapgto',index:'formapgto', width:90, editable: true,edittype:"select",editoptions:{value:"BC:BANCO;DN:DINHEIRO;CH:CHEQUE"}},
-								{name:'obs',index:'obs', width:150, sortable:false,editable: true,edittype:"textarea", editoptions:{rows:"2",cols:"10"}},
-								{name:'status',index:'status', width:70, editable: true,edittype:"checkbox",editoptions: {value:"Yes:No"},unformat: aceSwitch}, 
-								{name:'datapgto',index:'datapgto',width:90, editable:true, sorttype:"date",unformat: pickDate}, 
-								{name:'valorpgto',index:'valorpgto', width:150,editable: true,editoptions:{size:"20",maxlength:"30"}}
+								{name:'idcta_pagar',index:'idcta_pagar', key:true, width:20, editable: false,
+								formoptions: {
+		                            colpos: 1, // the position of the column
+		                            rowpos: 1, // the position of the row
+		                            label: "Código: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'dt_vencimento',index:'dt_vencimento', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 2, // the position of the column
+		                            rowpos: 1, // the position of the row
+		                            label: "Data Venc.: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'nm_favorecido',index:'nm_favorecido', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 1, // the position of the column
+		                            rowpos: 2, // the position of the row
+		                            label: "Favorecido: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'vl_pagar',index:'vl_pagar', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 2, // the position of the column
+		                            rowpos: 2, // the position of the row
+		                            label: "Valor: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'nm_ccusto',index:'nm_ccusto', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 1, // the position of the column
+		                            rowpos: 3, // the position of the row
+		                            label: "Centro de custo: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'nm_classificacao',index:'nm_classificacao', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 2, // the position of the column
+		                            rowpos: 3, // the position of the row
+		                            label: "Classificação: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'nm_formapgto',index:'nm_formapgto', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 1, // the position of the column
+		                            rowpos: 4, // the position of the row
+		                            label: "Forma Pgto: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'tx_obs',index:'tx_obs', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 2, // the position of the column
+		                            rowpos: 4, // the position of the row
+		                            label: "Obs.: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'cd_status',index:'cd_status', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 1, // the position of the column
+		                            rowpos: 5, // the position of the row
+		                            label: "Status: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'dt_pago',index:'dt_pago', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 2, // the position of the column
+		                            rowpos: 5, // the position of the row
+		                            label: "Data pgto.: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }},
+								{name:'vl_pago',index:'vl_pago', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								formoptions: {
+		                            colpos: 1, // the position of the column
+		                            rowpos: 6, // the position of the row
+		                            label: "Valor pgto.: " // the label to show for each input control                    
+		                            //elmsuffix: " * " // the suffix to show after that
+		                        }}
 							], 
 			
 							viewrecords : true,
@@ -534,7 +595,7 @@
 								}, 0);
 							},
 			
-							editurl: $path_base+"/dummy.html",//nothing is saved
+							editurl: 'http://104.236.0.195/crud_contasapagar.php',//nothing is saved
 							//caption: "jqGrid with inline editing",
 			
 			
@@ -582,6 +643,9 @@
 							{
 								//edit record form
 								//closeAfterEdit: true,
+								height: 'auto',
+                    			width: 1024,
+								editCaption: "Alterar conta a pagar",
 								recreateForm: true,
 								beforeShowForm : function(e) {
 									var form = $(e[0]);
@@ -591,6 +655,9 @@
 							},
 							{
 								//new record form
+								height: 'auto',
+                    			width: 1024,
+								editCaption: "Incluir nova conta a pagar",
 								closeAfterAdd: true,
 								recreateForm: true,
 								viewPagerButtons: false,
@@ -603,6 +670,7 @@
 							{
 								//delete record form
 								recreateForm: true,
+								editCaption: "Excluir conta a pagar",
 								beforeShowForm : function(e) {
 									var form = $(e[0]);
 									if(form.data('styled')) return false;
@@ -619,6 +687,7 @@
 							{
 								//search form
 								recreateForm: true,
+								editCaption: "Pesquisar conta a pagar",
 								afterShowSearch: function(e){
 									var form = $(e[0]);
 									form.closest('.ui-jqdialog').find('.ui-jqdialog-title').wrap('<div class="widget-header" />')
@@ -636,6 +705,9 @@
 							},
 							{
 								//view record form
+								height: 'auto',
+                    			width: 1024,
+								editCaption: "Visualizar conta a pagar",
 								recreateForm: true,
 								beforeShowForm: function(e){
 									var form = $(e[0]);
