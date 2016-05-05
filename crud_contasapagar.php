@@ -32,7 +32,8 @@ if ($_POST) {
 	print_r($_POST);
 	if($_POST['oper'] == 'add') {
 		
-		$aInsertCtaPagar = json_decode($_POST);
+		//$aInsertCtaPagar = json_decode($_POST, true);
+		$aInsertCtaPagar = json_decode(json_encode( $_POST ), true );
 		include_once('class.crud.finan.php');
 
 		$oCrudFinan = new CrudFinan();

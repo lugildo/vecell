@@ -83,16 +83,16 @@ class CrudFinan {
 			$oInsertCtaPagar = $this->oCon->prepare(" INSERT INTO cta_pagar 
 													                 (nm_favorecido, dt_vencimento, vl_pagar, dt_pago, cd_status, nm_ccusto, nm_classificacao, tx_obs, nm_formapgto, vl_pago)
 															  VALUES (:nm_favorecido, :dt_vencimento, :vl_pagar, :dt_pago, :cd_status, :nm_ccusto, :nm_classificacao, :tx_obs, :nm_formapgto, :vl_pago) "); 
-			$oUpdateCtaPagar->bindParam(":nm_favorecido", 		$aUpdateCtaPagar['nm_favorecido'], 		PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":dt_vencimento", 		$aUpdateCtaPagar['dt_vencimento'], 		PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":vl_pagar", 	 		$aUpdateCtaPagar['vl_pagar'], 	 		PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":dt_pago", 	 		$aUpdateCtaPagar['dt_pago'], 	 		PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":cd_status", 	 	 	$aUpdateCtaPagar['cd_status'], 			PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":nm_ccusto", 	 	 	$aUpdateCtaPagar['nm_ccusto'], 			PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":nm_classificacao",	$aUpdateCtaPagar['nm_classificacao'], 	PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":tx_obs", 	 			$aUpdateCtaPagar['tx_obs'], 	 		PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":nm_formapgto", 		$aUpdateCtaPagar['nm_formapgto'], 	 	PDO::PARAM_STR);
-			$oUpdateCtaPagar->bindParam(":vl_pago", 			$aUpdateCtaPagar['vl_pago'], 	 		PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":nm_favorecido", 		$oInsertCtaPagar['nm_favorecido'], 		PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":dt_vencimento", 		$oInsertCtaPagar['dt_vencimento'], 		PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":vl_pagar", 	 		$oInsertCtaPagar['vl_pagar'], 	 		PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":dt_pago", 	 		$oInsertCtaPagar['dt_pago'], 	 		PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":cd_status", 	 	 	$oInsertCtaPagar['cd_status'], 			PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":nm_ccusto", 	 	 	$oInsertCtaPagar['nm_ccusto'], 			PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":nm_classificacao",	$oInsertCtaPagar['nm_classificacao'], 	PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":tx_obs", 	 			$oInsertCtaPagar['tx_obs'], 	 		PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":nm_formapgto", 		$oInsertCtaPagar['nm_formapgto'], 	 	PDO::PARAM_STR);
+			$oInsertCtaPagar->bindParam(":vl_pago", 			$oInsertCtaPagar['vl_pago'], 	 		PDO::PARAM_STR);
 			$oInsertCtaPagar->execute();
 		} catch(PDOException $e) {
 	    	echo 'ERROR: ' . $e->getMessage();
