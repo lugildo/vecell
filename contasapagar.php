@@ -496,14 +496,25 @@
 							colModel:[
 								{name:'idcta_pagar',index:'idcta_pagar', key:true, width:20, editable: false,
 								formoptions: {
-		                            colpos: 1, // the position of the column
+		                            colpos: 2, // the position of the column
 		                            rowpos: 1, // the position of the row
 		                            label: "Código: " // the label to show for each input control                    
 		                            //elmsuffix: " * " // the suffix to show after that
 		                        }},
-								{name:'dt_vencimento',index:'dt_vencimento', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								{name:'dt_vencimento',index:'dt_vencimento', width:90, editable: true,editrules: {edithidden:true} , 
+								editoptions: {
+								                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
+								                            // use it to place a third party control to customize the toolbar
+								                            dataInit: function (element) {
+								                               $(element).datepicker({
+																	autoclose: true,
+																	format: 'dd/mm/yyyy',
+																	orientation : 'bottom'
+								                                });
+								                            }
+								                        },
 								formoptions: {
-		                            colpos: 2, // the position of the column
+		                            colpos: 1, // the position of the column
 		                            rowpos: 1, // the position of the row
 		                            label: "Data Venc.: " // the label to show for each input control                    
 		                            //elmsuffix: " * " // the suffix to show after that
@@ -522,7 +533,9 @@
 		                            label: "Valor: " // the label to show for each input control                    
 		                            //elmsuffix: " * " // the suffix to show after that
 		                        }},
-								{name:'nm_ccusto',index:'nm_ccusto', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								{name:'nm_ccusto',index:'nm_ccusto', width:90, editable: true,editrules: {edithidden:true} ,  edittype: "select", editoptions: {
+									value: "1:Administrativo;2:Financeiro;3:Comercial;4:Tecnologia"
+								},
 								formoptions: {
 		                            colpos: 1, // the position of the column
 		                            rowpos: 3, // the position of the row
@@ -536,7 +549,10 @@
 		                            label: "Classificação: " // the label to show for each input control                    
 		                            //elmsuffix: " * " // the suffix to show after that
 		                        }},
-								{name:'nm_formapgto',index:'nm_formapgto', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								{name:'nm_formapgto',index:'nm_formapgto', width:90, editable: true,editrules: {edithidden:true} , edittype: "select",
+								editoptions: {
+									value: "C:Caixa;H:Cheque;D:Depósito;T:Transferência"
+								},
 								formoptions: {
 		                            colpos: 1, // the position of the column
 		                            rowpos: 4, // the position of the row
@@ -550,14 +566,27 @@
 		                            label: "Obs.: " // the label to show for each input control                    
 		                            //elmsuffix: " * " // the suffix to show after that
 		                        }},
-								{name:'cd_status',index:'cd_status', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								{name:'cd_status',index:'cd_status', width:90, editable: true,editrules: {edithidden:true}, edittype: "select",
+								editoptions: {
+									value: "A:Agendado;P:Pago;C:Cancelado"
+								},
 								formoptions: {
 		                            colpos: 1, // the position of the column
 		                            rowpos: 5, // the position of the row
 		                            label: "Status: " // the label to show for each input control                    
 		                            //elmsuffix: " * " // the suffix to show after that
 		                        }},
-								{name:'dt_pago',index:'dt_pago', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+								{name:'dt_pago',index:'dt_pago', width:90, editable: true,editrules: {edithidden:true} , editoptions: {
+								                            // dataInit is the client-side event that fires upon initializing the toolbar search field for a column
+								                            // use it to place a third party control to customize the toolbar
+								                            dataInit: function (element) {
+								                               $(element).datepicker({
+																	autoclose: true,
+																	format: 'dd/mm/yyyy',
+																	orientation : 'bottom'
+								                                });
+								                            }
+								                        },
 								formoptions: {
 		                            colpos: 2, // the position of the column
 		                            rowpos: 5, // the position of the row

@@ -229,6 +229,41 @@
 							</a>
 						</li>
 						<li>
+							<a href="#"   class="dropdown-toggle">
+								<i class="icon-user"></i>
+								<span class="menu-text"> Associado </span>
+								<b class="arrow icon-angle-down"></b>
+							</a>
+							<ul class="submenu">	
+								<li>
+									<a href="#">
+										<i class="icon-double-angle-right"></i>
+
+										Extrato
+									</a>
+								</li>	
+								<li>
+									<a href="#" >
+										<i class="icon-double-angle-right"></i>
+
+										Rede
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-file"></i>
+								<span class="menu-text"> Associação </span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<i class="icon-magnet"></i>
+								<span class="menu-text"> Credenciada </span>
+							</a>
+						</li>
+						<li>
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-usd"></i>
 								<span class="menu-text"> Master  </span>
