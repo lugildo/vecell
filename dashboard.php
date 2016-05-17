@@ -1,5 +1,10 @@
 <?php
 	zray_disable(true);
+	$sTemPermissao['associado'] 	= 1;
+	$sTemPermissao['associacao'] 	= 1;
+	$sTemPermissao['credenciada'] 	= 1;
+	$sTemPermissao['master'] 		= 1;
+	$sTemPermissao['dashboard'] 	= 1;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -228,6 +233,7 @@
 								<span class="menu-text"> Dashboard </span>
 							</a>
 						</li>
+						<?php if($sTemPermissao['associado'] == 1) { ?>
 						<li>
 							<a href="#"   class="dropdown-toggle">
 								<i class="icon-user"></i>
@@ -251,6 +257,7 @@
 								</li>
 							</ul>
 						</li>
+						<?php }?>
 						<li>
 							<a href="#">
 								<i class="icon-file"></i>
