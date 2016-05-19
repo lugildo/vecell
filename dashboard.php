@@ -5,6 +5,11 @@
 	$sTemPermissao['credenciada'] 	= 1;
 	$sTemPermissao['master'] 		= 1;
 	$sTemPermissao['dashboard'] 	= 1;
+	
+	echo '<pre>';
+		print_r($_SESSION);
+		echo '<pre>';
+		//die;
 ?>
 <!DOCTYPE html>
 <html lang="en">

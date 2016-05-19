@@ -40,113 +40,24 @@ class Tools {
 	  *
 	**/
 	function getPermissoes($sIdUser, $sSenha) {
-        //global $db;
-        
-        $query = $db->query(" SELECT Categoria
-  		  						FROM TB_Permissoes
-							   WHERE (PK_Usuario = '".$sIdUser."' AND Senha = '".$sSenha."')"); 
-			   		
+        global $db;
+        $aPermissoes = '';
+        $query = $db->query(" SELECT TB_Perfis.Nome as Perfil, TB_Acoes.Modulo, TB_Acoes.Submodulo, TB_Acoes.Acao, TB_Acoes.Situacao
+  		  						FROM TB_Acoes
+							   INNER JOIN TB_Permissoes on (TB_Permissoes.FK_Perfil = TB_Acoes.FK_Perfil)
+							   INNER JOIN TB_Perfis	on (TB_Perfis.PK_Codigo = TB_Acoes.FK_Perfil)
+							   WHERE (TB_Permissoes.PK_Usuario = '".$sIdUser."' AND TB_Permissoes.Senha = '".$sSenha."')"); 
+	   		
         $this->iLinhas = 1;
 		while($row = $query->fetch(PDO::FETCH_ASSOC)) {
 	
             $this->iLinhas ++;
-				$this->aAssociacoes[] = $row;
+			$aPermissoes[] = $row;
 			
 		}
 		
-		return $this->aAssociacoes;
+		return $aPermissoes;
 	}	
-	
-	$aPermissoes = array(	'MASTER' 		=> array(	'CONVENIADA'	=>	array(	'VISUALIZAR' 	=> array(	0 => 'NEGADO',
-																												//1 => 'PERMITIDO',
-																												//2 => 'INDEFINIDO'
-																											),
-																					'EDITAR' 		=> array(	//0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												//2 => 'INDEFINIDO'
-																											),
-																					'EXCLUIR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'REL_COMISSOES' => array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											)
-																																																										),
-														'ASSOCIADO'		=>	array(	'VISUALIZAR' 	=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EDITAR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EXCLUIR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																																																										),
-														'ASSOCIACAO'	=>	array(	'VISUALIZAR' 	=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EDITAR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EXCLUIR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																																																										),
-														'MASTER'		=>	array(	'VISUALIZAR' 	=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EDITAR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EXCLUIR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																																																										),
-																																																		),
-							'ASSOCIADO'		=> array(	'EXTRATO'		=> array(	'VISUALIZAR' 	=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EDITAR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EXCLUIR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																																					 
-																				),
-														'REDE'			=> array(	'VISUALIZAR' 	=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																					'EDITAR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																												),
-																					'EXCLUIR' 		=> array(	0 => 'NEGADO',
-																												1 => 'PERMITIDO',
-																												2 => 'INDEFINIDO'
-																											),
-																																					 
-																				)
-																				
-													),
-							'CONVENIADA' 	=> XXX,
-							'ASSOCIACAO'	=> XXX
-						)
-	
+
 }
 ?>
