@@ -486,7 +486,7 @@
 		
 		//get all countries
 		var estados = $.ajax({
-								url: "http://104.236.0.195/estados.json", 
+								url: "http://104.236.0.195/load.combo.associacoes.php?lookup=estados", 
 								async: false, 
 								success: function(data, result) {
 									if (!result) alert('Failure to retrieve the Countries.');
