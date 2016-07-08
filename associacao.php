@@ -483,12 +483,125 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
+		
+		//get all countries
+		var estados = $.ajax({
+								url: "http://104.236.0.195/estados.json", 
+								async: false, 
+								success: function(data, result) {
+									if (!result) alert('Failure to retrieve the Countries.');
+								}
+								}).responseText;
+
+		
+		//alert(estados);
+		
+				
 			
+			/*
+			
+			
+			var stringEstados;
+				
+				function connection(callback){
+					//get JSON values
+					$.getJSON("http://104.236.0.195/estados.json", callback);
+				}
+
+				function usaDados(dados) {
+					
+					stringEstados = "{";
+					$.each(dados.estados, function( key, estado ) {
+						stringEstados += estado.PK_Sigla + ":\"" + estado.Nome + "\",";
+					});
+					stringEstados += "}";
+					stringEstados = stringEstados.replace(",}", "}");
+				
+					return stringEstados;
+				}
+				stringEstados = connection(usaDados);
+				alert(stringEstados);
+			
+			
+			
+			
+			
+			function setEstados () {
+	
+				//var stringJsonEstados = new String();
+				//var jsonEstados = {};
+				//atribui à variável o valor do JSON
+				var stringJsonEstados = $.getJSON("http://104.236.0.195/estados.json", function(data){
+				  return data;
+				}).responseText;
+				
+				alert(String(stringJsonEstados));
+				var jsonEstados = JSON.parse(stringJsonEstados);
+				
+				var stringEstados = new String();
+				stringEstados = "{";
+				//$.getJSON( "http://104.236.0.195/estados.json", function( estados ) {
+					$.each(stringJsonEstados, function( key, estado ) {
+						$.each(estado, function( chave, dados ) {
+							stringEstados += dados.PK_Sigla + ":\"" + dados.Nome + "\",";
+						});
+					});
+				//});
+				stringEstados += "}";
+				stringEstados = stringEstados.replace(",}", "}");
+				alert(String(stringEstados));				
+				return String(stringEstados);
+			}
+
+
+			*/
+			
+			/*
+			stringListagemEstados = setEstados();
+			
+
+			
+			// Lookup Combo Box Estados
+			function setEstados () {
+				
+				var estados = new Object;
+
+					//atribui à variável o valor do JSON
+
+				estados = $.getJSON("http://104.236.0.195/estados.json", function(data){
+				  alert(data);
+				  return data;
+
+				});
+				
+				
+
+				// LEIA: assim que obtiver a conexão, usa os dados
+				connection(usaDados);
+				alert(estados);
+				var stringEstados = new String();
+				stringEstados = "{";
+				//$.getJSON( "http://104.236.0.195/estados.json", function( estados ) {
+					$.each(estados, function( key, estado ) {
+						$.each(estado, function( chave, dados ) {
+							stringEstados += dados.PK_Sigla + ":\"" + dados.Nome + "\",";
+							//alert(stringEstados);
+						});
+					});
+				//});
+				stringEstados += "}";
+				stringEstados = stringEstados.replace(",}", "}");
+				
+				return String(stringEstados);
+			}
+
+			*/
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
-			
+			    
 				jQuery(grid_selector).jqGrid({
+					
 					//direction: "rtl",
 					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
@@ -551,7 +664,8 @@
                             label: "Cidade: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'FK_UF',index:'FK_UF', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"10",maxlength:"90"},
+						{name:'FK_UF',index:'FK_UF', width:90,hidden:true, editable: true, editrules: {edithidden:true}, edittype: "select", 
+						editoptions:{multiple: false, value: eval('(' + estados + ')')},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 5, // the position of the row
@@ -959,13 +1073,6 @@
 							enableTooltips(table);
 						}, 0);
 					},
-					
-					/*onSelectRow: function (id) {
-					    $(this).jqGrid('viewGridRow', id, {width: 500});
-					},*/
-					
-					editurl: "http://104.236.0.195/crud_associacao.php",//nothing is saved
-					//caption: "jqGrid with inline editing",
 			
 			
 					autowidth: true
@@ -1016,6 +1123,7 @@
                     	width: 1024,
 						editCaption: "Alterar dados da associação",
 						recreateForm: true,
+						closeAfterEdit: true,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
 							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header"/>')
@@ -1025,7 +1133,7 @@
 					{
 						//new record form
 						height: 'auto',
-                    	width: 800,
+                    	width: 1024,
 						addCaption: "Cadastrar associação",
 						closeAfterAdd: true,
 						recreateForm: true,

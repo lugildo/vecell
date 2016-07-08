@@ -1,15 +1,44 @@
 <?php
 	zray_disable(true);
-	$sTemPermissao['associado'] 	= 1;
-	$sTemPermissao['associacao'] 	= 1;
-	$sTemPermissao['credenciada'] 	= 1;
-	$sTemPermissao['master'] 		= 1;
-	$sTemPermissao['dashboard'] 	= 1;
+	session_start();
+	$sTemPermissao['associado'] 	= 0;
+	$sTemPermissao['associacao'] 	= 0;
+	$sTemPermissao['conveniada'] 	= 0;
+	$sTemPermissao['master'] 		= 0;
+	$sTemPermissao['dashboard'] 	= 0;
 	
-	echo '<pre>';
+	/*echo '<pre>';
 		print_r($_SESSION);
 		echo '<pre>';
-		//die;
+	die;*/
+	
+	foreach($_SESSION as $iKey => $aDados) {
+		if($iKey == 'permissoes') {
+			foreach($aDados as $iKeyMenu => $aDadosMenu) {
+				if($iKeyMenu == 'MASTER') {
+					$sTemPermissao['master'] 	= 1;
+				} else {
+					$sTemPermissao['master'] 	= 0;
+				}
+				foreach($aDadosMenu as $iKeySubMenu => $aDadosSubMenu){
+					//echo '<pre>';
+					//	print_r(trim($iKeySubMenu));
+					//	echo '<pre>';
+					if(trim($iKeySubMenu) == 'CONVENIADA') {
+						$sTemPermissao['conveniada'] 	= 1;
+					}
+					
+					if(trim($iKeySubMenu) == 'ASSOCIADO') {
+						$sTemPermissao['associado'] 	= 1;
+					}
+				}
+			}
+		}
+	}
+	/*echo '<pre>';
+		print_r($sTemPermissao);
+		echo '<pre>';
+	die;*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -262,19 +291,23 @@
 								</li>
 							</ul>
 						</li>
-						<?php }?>
+						<?php } if($sTemPermissao['associacao'] == 1) { ?>
 						<li>
 							<a href="#">
 								<i class="icon-file"></i>
 								<span class="menu-text"> Associação </span>
 							</a>
 						</li>
+						<?php } if($sTemPermissao['conveniada'] == 1) { ?>
 						<li>
 							<a href="#">
 								<i class="icon-magnet"></i>
 								<span class="menu-text"> Credenciada </span>
 							</a>
 						</li>
+						
+						<?php } if($sTemPermissao['master'] == 1) { ?>
+						
 						<li>
 							<a href="#" class="dropdown-toggle">
 								<i class="icon-usd"></i>
@@ -293,12 +326,16 @@
 									</a>
 
 									<ul class="submenu">
+										<?php if($sTemPermissao['associacao'] == 1) { ?>
+										
 										<li>
 											<a href="associacao.php">
 												<i class="icon-double-angle-right"></i>
 												Associações
 											</a>
 										</li>
+										<?php } if($sTemPermissao['associado'] == 1) { ?>
+										
 
 										<li>
 											<a href="associado.php">
@@ -306,16 +343,18 @@
 												Associado
 											</a>
 										</li>
+										<?php } if($sTemPermissao['conveniada'] == 1) { ?>
+										
 										<li>
 											<a href="conveniada.php">
 												<i class="icon-double-angle-right"></i>
 												Conveniada
 											</a>
 										</li>
-
-										
+										<?php }?>
 									</ul>
 								</li>
+								
 								<li>
 									<a href="contasapagar.php">
 										<i class="icon-double-angle-right"></i>
@@ -363,6 +402,8 @@
 								</li>
 							</ul>
 						</li>
+
+						<?php }?>
 						<li>
 							<a href="agenda.php">
 								<i class="icon-calendar"></i>

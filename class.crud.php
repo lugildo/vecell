@@ -77,132 +77,73 @@ class Crud {
 	
 	// Função para atualizar associações
 	function updateAssociacoes($aUpdateAssociacoes) {
-		try {
-			$oUpdateAssociacoes = $this->oCon->prepare(" UPDATE TB_Associacoes 
-															SET Nome        		= :Nome, 
-																CNPJ        		= :CNPJ, 
-																Site        		= :Site, 
-																Email       		= :Email, 
-																Endereco    		= :Endereco, 
-																Bairro      		= :Bairro, 
-																Cidade      		= :Cidade, 
-																Cep         		= :Cep, 
-																FK_UF       		= :FK_UF, 
-																Fone        		= :Fone, 
-																Fax         		= :Fax, 
-																Celular     		= :Celular, 
-																Bco         		= :Bco, 
-																Ag          		= :Ag, 
-																Cta         		= :Cta, 
-																Nome_Presid 		= :Nome_Presid, 
-																CPF_Presid  		= :CPF_Presid, 
-																RG_Presid   		= :RG_Presid, 
-																Nome_Vice   		= :Nome_Vice, 
-																CPF_Vice    		= :CPF_Vice, 
-																RG_Vice     		= :RG_Vice, 
-																Nome_Tes			= :Nome_Tes, 
-																CPF_Tes				= :CPF_Tes, 
-																RG_Tes				= :RG_Tes, 
+		
+		$sSQL = " UPDATE TB_Associacoes 
+															SET Nome        		= '".$aUpdateAssociacoes['Nome']."', 
+																CNPJ        		= ".$aUpdateAssociacoes['CNPJ'].", 
+																Site        		= '".$aUpdateAssociacoes['Site']."', 
+																Email       		= '".$aUpdateAssociacoes['Email']."', 
+																Endereco    		= '".$aUpdateAssociacoes['Endereco']."', 
+																Bairro      		= '".$aUpdateAssociacoes['Bairro']."', 
+																Cidade      		= '".$aUpdateAssociacoes['Cidade']."', 
+																Cep         		= ".$aUpdateAssociacoes['CEP'].", 
+																FK_UF       		= '".$aUpdateAssociacoes['FK_UF']."', 
+																Fone        		= ".$aUpdateAssociacoes['Fone'].", 
+																Fax         		= ".$aUpdateAssociacoes['Fax'].", 
+																Celular     		= ".$aUpdateAssociacoes['Celular'].", 
+																Bco         		= ".$aUpdateAssociacoes['Bco'].", 
+																Ag          		= '".$aUpdateAssociacoes['Ag']."', 
+																Cta         		= '".$aUpdateAssociacoes['Cta']."', 
+																Nome_Presid 		= '".$aUpdateAssociacoes['Nome_Presid']."', 
+																CPF_Presid  		= ".$aUpdateAssociacoes['CPF_Presid'].", 
+																RG_Presid   		= '".$aUpdateAssociacoes['RG_Presid']."', 
+																Nome_Vice   		= '".$aUpdateAssociacoes['Nome_Vice']."', 
+																CPF_Vice    		= ".$aUpdateAssociacoes['CPF_Vice'].", 
+																RG_Vice     		= '".$aUpdateAssociacoes['RG_Vice']."', 
+																Nome_Tes			= '".$aUpdateAssociacoes['Nome_Tes']."', 
+																CPF_Tes				= ".$aUpdateAssociacoes['CPF_Tes'].", 
+																RG_Tes				= '".$aUpdateAssociacoes['RG_Tes']."', 
 																Alt					= Cast ('0' as Bit), 
-																Sigla				= :Sigla, 
-																Bloq				= Cast (:Bloq as Bit), 
-																Motivo				= :Motivo, 
-																TUC					= Cast(:TUC as Money), 
-																Dia_Corte			= :Dia_Corte, 
-																Dia_Pagto			= :Dia_Pagto, 
-																Link_Rede			= :Link_Rede, 
-																Desconto			= Cast(:Desconto as Bit), 
-																Nome_Contato		= :Nome_Contato, 
-																Fone_Contato    	= :Fone_Contato, 
-																Feira				= Cast(:Feira as Bit), 
-																Dia_Envio			= :Dia_Envio, 
-																Endereco_Envio		= :Endereco_Envio, 
-																Dia_relatorio		= :Dia_relatorio, 
-																Dia_Repasse			= :Dia_Repasse, 
-																Contato_Adm			= :Contato_Adm, 
-																Contato_Fin			= :Contato_Fin, 
-																Fone_Adm			= :Fone_Adm, 
-																Fone_Fin			= :Fone_Fin, 
-																Fone_Feira			= :Fone_Feira, 
-																Mensalidade			= Cast(:Mensalidade as Money),
-																Dt_Cadastro			= :Dt_Cadastro, 
-																Bloq_Assoc			= Cast (:Bloq_Assoc as Bit),
-																FK_Consultor		= :FK_Consultor,
-																Automotivo			= Cast(:Automotivo as Bit), 
-																MaxParc				= :MaxParc, 
-																Invisivel_Btn_Ass	= Cast(:Invisivel_Btn_Ass as Bit),
-																Bloq_Limite			= Cast(:Bloq_Limite as Bit), 
-																NPLCP				= :NPLCP, 
-																VetorSecretarias	= :VetorSecretarias, 
-																Nro_Contrato		= :Nro_Contrato, 
-																Data_Contrato		= :Data_Contrato, 
-																Adm					= :Adm, 
-																Bonus				= :Bonus, 
-																Consultor			= :Consultor, 
-																Desc_Folha			= Cast(:Desc_Folha as bit)
+																Sigla				= '".$aUpdateAssociacoes['Sigla']."', 
+																Bloq				= Cast (".$aUpdateAssociacoes['Bloq']." as Bit), 
+																Motivo				= '".$aUpdateAssociacoes['Motivo']."', 
+																TUC					= Cast(".$aUpdateAssociacoes['TUC']." as Money), 
+																Dia_Corte			= ".$aUpdateAssociacoes['Dia_Corte'].", 
+																Dia_Pagto			= ".$aUpdateAssociacoes['Dia_Pagto'].", 
+																Link_Rede			= '".$aUpdateAssociacoes['Link_Rede']."', 
+																Desconto			= Cast(".$aUpdateAssociacoes['Desconto']." as Bit), 
+																Nome_Contato		= '".$aUpdateAssociacoes['Nome_Contato']."', 
+																Fone_Contato    	= ".$aUpdateAssociacoes['Fone_Contato'].", 
+																Feira				= Cast(".$aUpdateAssociacoes['Feira']." as Bit), 
+																Dia_Envio			= ".$aUpdateAssociacoes['Dia_Envio'].", 
+																Endereco_Envio		= '".$aUpdateAssociacoes['Endereco_Envio']."', 
+																Dia_relatorio		= ".$aUpdateAssociacoes['Dia_relatorio'].", 
+																Dia_Repasse			= ".$aUpdateAssociacoes['Dia_Repasse'].", 
+																Contato_Adm			= '".$aUpdateAssociacoes['Contato_Adm']."', 
+																Contato_Fin			= '".$aUpdateAssociacoes['Contato_Fin']."', 
+																Fone_Adm			= ".$aUpdateAssociacoes['Fone_Adm'].", 
+																Fone_Fin			= ".$aUpdateAssociacoes['Fone_Fin'].", 
+																Fone_Feira			= ".$aUpdateAssociacoes['Fone_Feira'].", 
+																Mensalidade			= Cast(".$aUpdateAssociacoes['Mensalidade']." as Money),
+																Bloq_Assoc			= Cast(".$aUpdateAssociacoes['Bloq_Assoc']." as Bit),
+																MaxParc				= ".$aUpdateAssociacoes['MaxParc'].", 
+																Invisivel_Btn_Ass	= Cast(".$aUpdateAssociacoes['Invisivel_Btn_Ass']." as Bit),
+																Bloq_Limite			= Cast(".$aUpdateAssociacoes['Bloq_Limite']." as Bit), 
+																NPLCP				= ".$aUpdateAssociacoes['NPLCP'].", 
+																VetorSecretarias	= '".$aUpdateAssociacoes['VetorSecretarias']."', 
+																Adm					= '".$aUpdateAssociacoes['Adm']."', 
+																Bonus				= '".$aUpdateAssociacoes['Bonus']."', 
+																Consultor			= '".$aUpdateAssociacoes['Consultor']."', 
+																Desc_Folha			= Cast(".$aUpdateAssociacoes['Desc_Folha']." as bit)
 														   FROM TB_Associacoes 
-														  WHERE ( PK_Codigo = :PK_Codigo) "); 
-			$oUpdateAssociacoes->bindParam(":Nome", $aUpdateAssociacoes['Nome'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":CNPJ", $aUpdateAssociacoes['CNPJ'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Site", $aUpdateAssociacoes['Site'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Email", $aUpdateAssociacoes['Email'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Endereco", $aUpdateAssociacoes['Endereco'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Bairro", $aUpdateAssociacoes['Bairro'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Cidade", $aUpdateAssociacoes['Cidade'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Cep", $aUpdateAssociacoes['Cep'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":FK_UF", $aUpdateAssociacoes['FK_UF'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Fone", $aUpdateAssociacoes['Fone'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Fax", $aUpdateAssociacoes['Fax'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Celular", $aUpdateAssociacoes['Celular'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Bco", $aUpdateAssociacoes['Bco'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Ag", $aUpdateAssociacoes['Ag'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Cta", $aUpdateAssociacoes['Cta'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Nome_Presid", $aUpdateAssociacoes['Nome_Presid'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":CPF_Presid", $aUpdateAssociacoes['CPF_Presid'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":RG_Presid", $aUpdateAssociacoes['RG_Presid'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Nome_Vice", $aUpdateAssociacoes['Nome_Vice'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":CPF_Vice", $aUpdateAssociacoes['CPF_Vice'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":RG_Vice", $aUpdateAssociacoes['RG_Vice'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Nome_Tes", $aUpdateAssociacoes['Nome_Tes'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":CPF_Tes", $aUpdateAssociacoes['CPF_Tes'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":RG_Tes", $aUpdateAssociacoes['RG_Tes'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Sigla", $aUpdateAssociacoes['Sigla'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Bloq", $aUpdateAssociacoes['Bloq'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Motivo", $aUpdateAssociacoes['Motivo'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":TUC", $aUpdateAssociacoes['TUC'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Dia_Corte", $aUpdateAssociacoes['Dia_Corte'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Dia_Pagto", $aUpdateAssociacoes['Dia_Pagto'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Link_Rede", $aUpdateAssociacoes['Link_Rede'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Desconto", $aUpdateAssociacoes['Desconto'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Nome_Contato", $aUpdateAssociacoes['Nome_Contato'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Fone_Contato", $aUpdateAssociacoes['Fone_Contato'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Feira", $aUpdateAssociacoes['Feira'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Dia_Envio", $aUpdateAssociacoes['Dia_Envio'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Endereco_Envio", $aUpdateAssociacoes['Endereco_Envio'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Dia_relatorio", $aUpdateAssociacoes['Dia_relatorio'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Dia_Repasse", $aUpdateAssociacoes['Dia_Repasse'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Contato_Adm", $aUpdateAssociacoes['Contato_Adm'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Contato_Fin", $aUpdateAssociacoes['Contato_Fin'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Fone_Adm", $aUpdateAssociacoes['Fone_Adm'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Fone_Fin", $aUpdateAssociacoes['Fone_Fin'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Fone_Feira", $aUpdateAssociacoes['Fone_Feira'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Mensalidade", $aUpdateAssociacoes['Mensalidade'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Dt_Cadastro", $aUpdateAssociacoes['Dt_Cadastro'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Bloq_Assoc", $aUpdateAssociacoes['Bloq_Assoc'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":FK_Consultor", $aUpdateAssociacoes['FK_Consultor'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Automotivo", $aUpdateAssociacoes['Automotivo'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":MaxParc", $aUpdateAssociacoes['MaxParc'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Invisivel_Btn_Ass", $aUpdateAssociacoes['Invisivel_Btn_Ass'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Bloq_Limite", $aUpdateAssociacoes['Bloq_Limite'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":NPLCP", $aUpdateAssociacoes['NPLCP'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":VetorSecretarias", $aUpdateAssociacoes['VetorSecretarias'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Nro_Contrato", $aUpdateAssociacoes['Nro_Contrato'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Data_Contrato", $aUpdateAssociacoes['Data_Contrato'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Adm", $aUpdateAssociacoes['Adm'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Bonus", $aUpdateAssociacoes['Bonus'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Consultor", $aUpdateAssociacoes['Consultor'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":Desc_Folha", $aUpdateAssociacoes['Desc_Folha'] , PDO::PARAM_STR);
-			$oUpdateAssociacoes->bindParam(":PK_Codigo", $aUpdateAssociacoes['PK_Codigo'] , PDO::PARAM_INT);
+														  WHERE ( PK_Codigo = ".$aUpdateAssociacoes['PK_Codigo'].") ";
+														  
+			
+											  
+		try {
+			$oUpdateAssociacoes = $this->oCon->prepare($sSQL); 
+
+			
 			$oUpdateAssociacoes->execute();
 		} catch(PDOException $e) {
 	    	echo 'ERROR: ' . $e->getMessage();
@@ -211,7 +152,7 @@ class Crud {
 		return true;
 	}
 	
-	
+
 	// Função para listar associados
 	function getAssociados($iFK_Assoc) {
 		try {
@@ -254,31 +195,31 @@ class Crud {
 		return $oAssociados;
 	}
 
-
+	/*
 	// Função para atualizar associados
 	function updateAssociados($aUpdateAssociados) {
 		try {
 			$oUpdateAssociados = $this->oCon->prepare(" UPDATE TB_Clientes 
-															SET PK_Matricula		= :PK_Matricula, 
-																FK_Assoc			= :FK_Assoc,
-																Nome				= :Nome, 
+															SET PK_Matricula		= ".$aUpdateAssociacoes['']PK_Matricula, 
+																FK_Assoc			= ".$aUpdateAssociacoes['']FK_Assoc,
+																Nome				= ".$aUpdateAssociacoes['']Nome, 
 																Lim_Credito			= Cast(:Lim_Credito as Money), 
 																Bloq				= Cast(:Bloq as bit), 
 																OptInNews			= Cast(:OptInNews as bit), 
-																Email				= :Email, 
-																Endereco			= :Endereco, 
-																Fone				= :Fone,
-																Celular				= :Celular, 
-																CPF					= :CPF, 
-																Bairro				= :Bairro,
-																Cep					= :Cep, 
-																Cidade				= :Cidade, 
-																FK_UF				= :FK_UF, 
-																RG					= :RG,
-																Bco					= :Bco, 
-																Ag					= :Ag, 
-																Cta					= :Cta, 
-																Motivo				= :Motivo,
+																Email				= ".$aUpdateAssociacoes['']Email, 
+																Endereco			= ".$aUpdateAssociacoes['']Endereco, 
+																Fone				= ".$aUpdateAssociacoes['']Fone,
+																Celular				= ".$aUpdateAssociacoes['']Celular, 
+																CPF					= ".$aUpdateAssociacoes['']CPF, 
+																Bairro				= ".$aUpdateAssociacoes['']Bairro,
+																Cep					= ".$aUpdateAssociacoes['']Cep, 
+																Cidade				= ".$aUpdateAssociacoes['']Cidade, 
+																FK_UF				= ".$aUpdateAssociacoes['']FK_UF, 
+																RG					= ".$aUpdateAssociacoes['']RG,
+																Bco					= ".$aUpdateAssociacoes['']Bco, 
+																Ag					= ".$aUpdateAssociacoes['']Ag, 
+																Cta					= ".$aUpdateAssociacoes['']Cta, 
+																Motivo				= ".$aUpdateAssociacoes['']Motivo,
 																Seguro				= Cast(:Seguro as Money), 
 																Mensalidade			= Cast(:Mensalidade as Money),
 																Dt_Cadastro			= Cast(:Dt_Cadastro as Datetime), 
@@ -290,8 +231,8 @@ class Crud {
 																Colombo_Virtual		= Cast(:Colombo_Virtual as Money), 
 																Clube_Descontos		= Cast(:Clube_Descontos as Money), 
 																Mensal_Cartao		= Cast(:Mensal_Cartao as Money), 
-																Nome_Seguro			= :Nome_Seguro, 
-																Nome_Ass_Jur		= :Nome_Ass_Jur,
+																Nome_Seguro			= ".$aUpdateAssociacoes['']Nome_Seguro, 
+																Nome_Ass_Jur		= ".$aUpdateAssociacoes['']Nome_Ass_Jur,
 																Dt_Mensalidade		= Cast(:Dt_Mensalidade as Datetime), 
 																Dt_Mensal_Cartao	= Cast(:Dt_Mensal_Cartao as Datetime), 
 																Dt_Seguro			= Cast(:Dt_Seguro as Datetime), 
@@ -301,9 +242,9 @@ class Crud {
 																Dt_Plano_Sta_Casa	= Cast(:Dt_Plano_Sta_Casa as Datetime), 
 																Dt_Angelus			= Cast(:Dt_Angelus as Datetime), 
 																Dt_Clube_Desc		= Cast(:Dt_Clube_Desc as Datetime), 
-																Email2				= :Email2, 
-																Cargo				= :Cargo, 
-																Secretaria			= :Secretaria 
+																Email2				= ".$aUpdateAssociacoes['']Email2, 
+																Cargo				= ".$aUpdateAssociacoes['']Cargo, 
+																Secretaria			= ".$aUpdateAssociacoes['']Secretaria 
 													From TB_Clientes Where (PK_Matricula=".cod_mat.") And (FK_Assoc=".p_codigo.");"); 
 			$oUpdateAssociados->bindParam(":Nome", $aUpdateAssociados['Nome'] , PDO::PARAM_STR);
 			$oUpdateAssociados->bindParam(":PK_Matricula", $aUpdateAssociados['PK_Matricula'] , PDO::PARAM_INT);
@@ -352,7 +293,7 @@ class Crud {
 
 			$oUpdateAssociados->execute();
 		} catch(PDOException $e) {
-	    	echo 'ERROR: ' . $e->getMessage();
+	    	echo 'ERROR: ' . $e->getMessage($oUpdateAssociados);
 		}
 
 		return true;
@@ -426,67 +367,67 @@ class Crud {
 	function updateConveniadas($aUpdateConveniadas) {
 		try {
 			$oUpdateConveniadas = $this->oCon->prepare(" UPDATE TB_Conveniadas 
-															SET Razao					= :Razao, 
-																Nome					= :Nome, 
-																CNPJ					= :CNPJ, 
-																Insc_Est				= :Insc_Est, 
-																Email					= :Email, 
-																Site					= :Site, 
-																Bco						= :Bco, 
-																Ag						= :Ag, 
-																Cta						= :Cta, 
-																Bco2					= :Bco2,
-																Ag2						= :Ag2, 
-																Cta2					= :Cta2, 
-																Endereco				= :Endereco, 
-																Bairro					= :Bairro, 
-																Cep						= :Cep, 
-																Cidade					= :Cidade, 
-																FK_UF					= :FK_UF, 
-																Fone					= :Fone, 
-																Fax						= :Fax, 
-																Celular					= :Celular, 
-																FK_Segmento				= :FK_Segmento, 
-																Condicoes				= :Condicoes, 
+															SET Razao					= ".$aUpdateAssociacoes['']Razao, 
+																Nome					= ".$aUpdateAssociacoes['']Nome, 
+																CNPJ					= ".$aUpdateAssociacoes['']CNPJ, 
+																Insc_Est				= ".$aUpdateAssociacoes['']Insc_Est, 
+																Email					= ".$aUpdateAssociacoes['']Email, 
+																Site					= ".$aUpdateAssociacoes['']Site, 
+																Bco						= ".$aUpdateAssociacoes['']Bco, 
+																Ag						= ".$aUpdateAssociacoes['']Ag, 
+																Cta						= ".$aUpdateAssociacoes['']Cta, 
+																Bco2					= ".$aUpdateAssociacoes['']Bco2,
+																Ag2						= ".$aUpdateAssociacoes['']Ag2, 
+																Cta2					= ".$aUpdateAssociacoes['']Cta2, 
+																Endereco				= ".$aUpdateAssociacoes['']Endereco, 
+																Bairro					= ".$aUpdateAssociacoes['']Bairro, 
+																Cep						= ".$aUpdateAssociacoes['']Cep, 
+																Cidade					= ".$aUpdateAssociacoes['']Cidade, 
+																FK_UF					= ".$aUpdateAssociacoes['']FK_UF, 
+																Fone					= ".$aUpdateAssociacoes['']Fone, 
+																Fax						= ".$aUpdateAssociacoes['']Fax, 
+																Celular					= ".$aUpdateAssociacoes['']Celular, 
+																FK_Segmento				= ".$aUpdateAssociacoes['']FK_Segmento, 
+																Condicoes				= ".$aUpdateAssociacoes['']Condicoes, 
 																Bloq					= Cast(:Bloq as bit), 
-																Motivo					= :Motivo, 
+																Motivo					= ".$aUpdateAssociacoes['']Motivo, 
 																OptInNews				= Cast(:OptInNews as bit), 																Alt=Cast('0' as Bit), 
-																FK_Grupo				= :FK_Grupo, 
-																Contato					= :Contato, 
-																Fone_Contato			= :Fone_Contato, 
+																FK_Grupo				= ".$aUpdateAssociacoes['']FK_Grupo, 
+																Contato					= ".$aUpdateAssociacoes['']Contato, 
+																Fone_Contato			= ".$aUpdateAssociacoes['']Fone_Contato, 
 																Dt_Cadastro				= Cast(:Dt_Cadastro as Datetime), 
 																Tx_Adm_CDC				= Cast(:Tx_Adm_CDC as Numeric(4,3)), 
 																Loja_Assoc				= Cast(:Loja_Assoc as bit), 
-																Pessoa					= :Pessoa, 
-																Nro_Contrato			= :Nro_Contrato, 
+																Pessoa					= ".$aUpdateAssociacoes['']Pessoa, 
+																Nro_Contrato			= ".$aUpdateAssociacoes['']Nro_Contrato, 
 																Data_Contrato			= Cast(:Data_Contrato as Datetime), 
-																Consultor				= :Consultor, 
+																Consultor				= ".$aUpdateAssociacoes['']Consultor, 
 																Valor_Contrato			= Cast(:Valor_Contrato as Money), 
 																Anuidade_Contrato		= Cast(:Anuidade_Contrato as Money),
-																Forma_Pgto				= :Forma_Pgto, 
+																Forma_Pgto				= ".$aUpdateAssociacoes['']Forma_Pgto, 
 																Data_Pgto1				= Cast(:Data_Pgto1 as Datetime), 
 																Valor_Pgto1				= Cast(:Valor_Pgto1 as Money), 
-																Situacao_Pg1			= :Situacao_Pg1, 
+																Situacao_Pg1			= ".$aUpdateAssociacoes['']Situacao_Pg1, 
 																Data_Pgto2				= Cast(:Data_Pgto2 as Datetime), 
 																Valor_Pgto2				= Cast(:Valor_Pgto2 as Money), 
-																Situacao_Pg2			= :Situacao_Pg2, 
+																Situacao_Pg2			= ".$aUpdateAssociacoes['']Situacao_Pg2, 
 																Data_Pgto3				= Cast(:Data_Pgto3 as Datetime), 
 																Valor_Pgto3				= Cast(:Valor_Pgto3 as Money),
-																Situacao_Pg3			= :Situacao_Pg3, 
-																TEF						= :TEF, 
-																TEF_Observacao			= :TEF_Observacao,
-																POS_Modelo				= :POS_Modelo, 
-																POS_Serial				= :POS_Serial, 
+																Situacao_Pg3			= ".$aUpdateAssociacoes['']Situacao_Pg3, 
+																TEF						= ".$aUpdateAssociacoes['']TEF, 
+																TEF_Observacao			= ".$aUpdateAssociacoes['']TEF_Observacao,
+																POS_Modelo				= ".$aUpdateAssociacoes['']POS_Modelo, 
+																POS_Serial				= ".$aUpdateAssociacoes['']POS_Serial, 
 																POS_Data_Inst			= Cast(:POS_Data_Inst as Datetime), 
 																TEF_Data_Inst			= Cast(:TEF_Data_Inst as Datetime), 
 																POS_Valor				= Cast(:POS_Valor as Money), 
 																POS_Mensal				= Cast(:POS_Mensal as Money), 
-																POS_Condicao			= :POS_Condicao, 
+																POS_Condicao			= ".$aUpdateAssociacoes['']POS_Condicao, 
 																POS_Data_Mensal1		= Cast(:POS_Data_Mensal1 as Datetime), 
-																Latitude				= :Latitude, 
-																Longitude				= :Longitude
+																Latitude				= ".$aUpdateAssociacoes['']Latitude, 
+																Longitude				= ".$aUpdateAssociacoes['']Longitude
 														FROM TB_Conveniadas 
-														WHERE (PK_Codigo = :PK_Codigo) "); 
+														WHERE (PK_Codigo = ".$aUpdateAssociacoes['']PK_Codigo) "); 
  			$oUpdateConveniadas->bindParam(":PK_Codigo", $aUpdateConveniadas['PK_Codigo'] , PDO::PARAM_INT);
  			$oUpdateConveniadas->bindParam(":Razao", $aUpdateConveniadas['Razao'] , PDO::PARAM_STR);
  			$oUpdateConveniadas->bindParam(":Nome", $aUpdateConveniadas['Nome'] , PDO::PARAM_STR);
@@ -554,7 +495,7 @@ class Crud {
 
 		return true;
 	}
-	
+	*/
 	
 	// Função para buscar bancos	
 	function getBancos($iKey) {
@@ -656,12 +597,12 @@ class Crud {
 
 		return true; 
 	}
-	
+/*	
 	// Função para excluir centro de custo
 	function deleteCentroCusto($iIdCentroCusto) {
 		try {
 			$oDeleteCentroCusto = $this->oCon->prepare(" DELETE FROM centrodecusto 
-							  						      WHERE id_ccusto = :id_ccusto "); 
+							  						      WHERE id_ccusto = ".$aUpdateAssociacoes['id_ccusto']."); 
 			$oDeleteCentroCusto->bindParam(":id_ccusto", $iIdCentroCusto, PDO::PARAM_INT);
 			$oDeleteCentroCusto->execute();
 		} catch(PDOException $e) {
@@ -670,6 +611,7 @@ class Crud {
 
 		return true;
 	}
+	*/
 }
 
 
