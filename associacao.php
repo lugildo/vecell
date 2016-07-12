@@ -670,7 +670,8 @@
 							dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=estados',
 							type:"GET",
 							buildSelect: function(data) {
-								var response = jQuery.parseJSON(data); //json data
+								var response = $.parseJSON(data); //json data
+								
 									var s = '<select style="width: 520px">';
 									if (response && response.length) { //
 										s += '<option value="0">--- Select Value ---</option>';
