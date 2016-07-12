@@ -514,18 +514,20 @@ class Crud {
 	
 	
 	// Função para buscar estados	
-	function getEstados($sKey) {
+	function getEstados() {
 		try {
-			$oEstados = $this->oCon->prepare(" SELECT PK_Sigla,
+			$oResult = $this->oCon->query(" SELECT PK_Sigla,
 				 									  Nome
-				                                 FROM TB_Estados 
-			                                    WHERE PK_Sigla = '".$sKey."' ");
-			
+				                                 FROM TB_Estados" );
+			if($oResult)
+				{
+					//percorre os resultados via o fetch()
+					$oEstados = $oResult->fetchAll(PDO::FETCH_OBJ);
+				}
 		} catch(PDOException $e) {
 	    	echo 'ERROR: ' . $e->getMessage();
 		}
-
-		return true;
+		return $oEstados;
 	}
 	
 	// Função para buscar segmentos	

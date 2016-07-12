@@ -483,7 +483,7 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-		
+		/*
 		//get all countries
 		var estados = $.ajax({
 								url: "http://104.236.0.195/load.combo.associacoes.php?lookup=estados", 
@@ -498,7 +498,7 @@
 		
 				
 			
-			/*
+			
 			
 			
 			var stringEstados;
@@ -665,7 +665,23 @@
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'FK_UF',index:'FK_UF', width:90,hidden:true, editable: true, editrules: {edithidden:true}, edittype: "select", 
-						editoptions:{multiple: false, value: eval('(' + estados + ')')},
+						editoptions:{
+							//multiple: false, value: eval('(' + estados + ')')
+							dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=estados',
+							type:"GET",
+							buildSelect: function(data) {
+								var response = jQuery.parseJSON(data); //json data
+									var s = '<select style="width: 520px">';
+									if (response && response.length) { //
+										s += '<option value="0">--- Select Value ---</option>';
+										for (var i = 0, l=response.length; i<l ; i++) {
+										var ri = response[i].value; // u can concatenate id here
+											s += '<option value="'+ri+'">'+ri+'</option>';
+										}
+									}
+									return s + "</select>";
+									},
+							},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 5, // the position of the row
