@@ -483,130 +483,17 @@
 
 		<!-- inline scripts related to this page -->
 		<script type="text/javascript">
-		/*
-		//get all countries
-		var estados = $.ajax({
-								url: "http://104.236.0.195/load.combo.associacoes.php?lookup=estados", 
-								async: false, 
-								success: function(data, result) {
-									if (!result) alert('Failure to retrieve the Countries.');
-								}
-								}).responseText;
 
-		
-		//alert(estados);
-		
-				
-			
-			
-			
-			
-			var stringEstados;
-				
-				function connection(callback){
-					//get JSON values
-					$.getJSON("http://104.236.0.195/estados.json", callback);
-				}
-
-				function usaDados(dados) {
-					
-					stringEstados = "{";
-					$.each(dados.estados, function( key, estado ) {
-						stringEstados += estado.PK_Sigla + ":\"" + estado.Nome + "\",";
-					});
-					stringEstados += "}";
-					stringEstados = stringEstados.replace(",}", "}");
-				
-					return stringEstados;
-				}
-				stringEstados = connection(usaDados);
-				alert(stringEstados);
-			
-			
-			
-			
-			
-			function setEstados () {
-	
-				//var stringJsonEstados = new String();
-				//var jsonEstados = {};
-				//atribui à variável o valor do JSON
-				var stringJsonEstados = $.getJSON("http://104.236.0.195/estados.json", function(data){
-				  return data;
-				}).responseText;
-				
-				alert(String(stringJsonEstados));
-				var jsonEstados = JSON.parse(stringJsonEstados);
-				
-				var stringEstados = new String();
-				stringEstados = "{";
-				//$.getJSON( "http://104.236.0.195/estados.json", function( estados ) {
-					$.each(stringJsonEstados, function( key, estado ) {
-						$.each(estado, function( chave, dados ) {
-							stringEstados += dados.PK_Sigla + ":\"" + dados.Nome + "\",";
-						});
-					});
-				//});
-				stringEstados += "}";
-				stringEstados = stringEstados.replace(",}", "}");
-				alert(String(stringEstados));				
-				return String(stringEstados);
-			}
-
-
-			*/
-			
-			/*
-			stringListagemEstados = setEstados();
-			
-
-			
-			// Lookup Combo Box Estados
-			function setEstados () {
-				
-				var estados = new Object;
-
-					//atribui à variável o valor do JSON
-
-				estados = $.getJSON("http://104.236.0.195/estados.json", function(data){
-				  alert(data);
-				  return data;
-
-				});
-				
-				
-
-				// LEIA: assim que obtiver a conexão, usa os dados
-				connection(usaDados);
-				alert(estados);
-				var stringEstados = new String();
-				stringEstados = "{";
-				//$.getJSON( "http://104.236.0.195/estados.json", function( estados ) {
-					$.each(estados, function( key, estado ) {
-						$.each(estado, function( chave, dados ) {
-							stringEstados += dados.PK_Sigla + ":\"" + dados.Nome + "\",";
-							//alert(stringEstados);
-						});
-					});
-				//});
-				stringEstados += "}";
-				stringEstados = stringEstados.replace(",}", "}");
-				
-				return String(stringEstados);
-			}
-
-			*/
 			jQuery(function($) {
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
 			    
 				jQuery(grid_selector).jqGrid({
 					
-					//direction: "rtl",
 					url:'http://104.236.0.195/crud_associacao.php', // link para buscar os dados de conexão
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link_da_Rede','Vetor_Secretarias','Clube_de_Descontos','Desconto_em_Folha','Feira','Fone_para_Agendamento_de_Feiras','Cartao_Automotivo','Bloqueio_Rede','Motivo','Bloqueio_Administrativo_da_Associacao','Bloqueio_de_Limites_de_Credito_de_Associados','Invisivel_no_Botao_Associacao_do_Perfil_da_Credenciada','Corte','Atualizacao_Saldo','Pagamento','Repasse_Rede','Envio_Documentacao','Endereco_de_Envio','Parcelamento_Maximo','Número_de_Parcelas_do_Limite_Credito_Parcelado','Adm','Bonus','Mensalidade','TUC','Consultor','FK_Consultor','Nro_Contrato','Data_Contrato','Dt_Cadastro'],
+					colNames:['Código','Sigla','Nome','CNPJ','Endereço','Bairro','CEP','Cidade','Estado','Site','E-mail','Fone','Fax','Celular','Banco','Ag','Cta','Presidente','RG','CPF','Vice-presidente','RG','CPF','Tesoureiro','RG','CPF','Contato Secretaria','Fone','Administrativo','Fone','Financeiro','Fone','Link_da_Rede','Vetor_Secretarias','Clube_de_Descontos','Desconto_em_Folha','Feira','Fone_para_Agendamento_de_Feiras','Cartao_Automotivo','Bloqueio_Rede','Motivo','Bloqueio_Administrativo_da_Associacao','Bloqueio_de_Limites_de_Credito_de_Associados','Invisivel_no_Botao_Associacao_do_Perfil_da_Credenciada','Corte','Atualizacao_Saldo','Pagamento','Repasse_Rede','Envio_Documentacao','Endereco_de_Envio','Parcelamento_Maximo','Número_de_Parcelas_do_Limite_Credito_Parcelado','Adm','Bonus','Mensalidade','TUC','Consultor','FK_Consultor','Nro_Contrato','Data_Contrato','Dt_Cadastro'],
 					colModel:[
 						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
 						formoptions: {
@@ -671,12 +558,12 @@
 							type:"GET",
 							buildSelect: function(data) {
 								var response = $.parseJSON(data); //json data
-								
+								//alert(response);
 									var s = '<select style="width: 520px">';
+									s += '<option value="0">--- Selecione o Estado ---</option>';
 									if (response && response.length) { //
-										s += '<option value="0">--- Select Value ---</option>';
 										for (var i = 0, l=response.length; i<l ; i++) {
-										var ri = response[i].value; // u can concatenate id here
+										var ri = response[i]; 
 											s += '<option value="'+ri+'">'+ri+'</option>';
 										}
 									}
@@ -724,6 +611,32 @@
                             label: "Celular: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
+						{name:'Banco',index:'Banco', width:90,hidden:true, editable: true, editrules: {edithidden:true}, edittype: "select", 
+						editoptions:{
+							//multiple: false, value: eval('(' + estados + ')')
+							dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=bancos',
+							type:"GET",
+							buildSelect: function(data) {
+								var response = $.parseJSON(data); //json data
+								//alert(response);
+									var s = '<select style="width: 520px">';
+									s += '<option value="0">--- Selecione o Banco ---</option>';
+									if (response && response.length) { //
+										for (var i = 0, l=response.length; i<l ; i++) {
+										var ri = response[i]; 
+											s += '<option value="'+ri+'">'+ri+'</option>';
+										}
+									}
+									return s + "</select>";
+									},
+							},
+						formoptions: {
+                            colpos: 2, // the position of the column
+                            rowpos: 8, // the position of the row
+                            label: "Banco: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						
 						{name:'Ag',index:'Ag', width:90,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"10",maxlength:"90"},
 						formoptions: {
                             colpos: 1, // the position of the column
