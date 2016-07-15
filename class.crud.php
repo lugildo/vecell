@@ -498,30 +498,33 @@ class Crud {
 	*/
 	
 	// Função para buscar bancos	
-	function getBancos($iKey) {
+	function getBancos($sKey) {
 		try {
-			$oBancos = $this->oCon->prepare(" SELECT PK_Codigo,
+			$oResult = $this->oCon->query(" SELECT PK_Codigo,
 				 									 Nome
 				                                FROM TB_Bancos 
-			                                   WHERE PK_Codigo = $iKey ");
-			
+			                                   WHERE $sKey 
+											   order by Nome ASC");
+			if($oResult)
+				{
+					$oBancos = $oResult->fetchAll(PDO::FETCH_OBJ);
+				}
 		} catch(PDOException $e) {
 	    	echo 'ERROR: ' . $e->getMessage();
 		}
 
-		return true;
+		return $oBancos;
 	}
-	
-	
+		
 	// Função para buscar estados	
-	function getEstados() {
+	function getEstados($s) {
 		try {
 			$oResult = $this->oCon->query(" SELECT PK_Sigla,
 				 									  Nome
-				                                 FROM TB_Estados" );
+				                                 FROM TB_Estados
+												 WHERE $sKey ");
 			if($oResult)
 				{
-					//percorre os resultados via o fetch()
 					$oEstados = $oResult->fetchAll(PDO::FETCH_OBJ);
 				}
 		} catch(PDOException $e) {
@@ -545,7 +548,6 @@ class Crud {
 
 		return true;
 	}
-	
 	
 	// Função para buscar grupos	
 	function getGrupos($sKey) {
