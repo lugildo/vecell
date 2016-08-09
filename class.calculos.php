@@ -66,7 +66,6 @@ class Calculos {
 
 		return $oIncidencias;
 	}
-	
 		
 	// Função para listar Produtos
 	function getProdutos() {
