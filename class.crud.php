@@ -517,7 +517,7 @@ class Crud {
 	}
 		
 	// Função para buscar estados	
-	function getEstados($s) {
+	function getEstados($sKey) {
 		try {
 			$oResult = $this->oCon->query(" SELECT PK_Sigla,
 				 									  Nome

@@ -156,20 +156,20 @@ class Calculos {
 	function getParcelas($sWhereParc, $dDtCorteIni, $dDtCorteFim, $iFkAssociacao) {
 		try {
 			$oResult = $this->oCon->query(" SELECT 
-													TB_Ordens_Compra.PK_CtOrdem AS 'Código da Liberação', ' ' + Convert(Char(10), 
-													TB_Ordens_Compra.Data, 103) + ' ' AS 'Data da Compra', 
-													TB_Ordens_Compra.Condicoes AS 'Número Total de Prestações', 
-													TB_Ordens_Compra.Vlr_Tot AS 'Valor Total da Compra', 
-													TB_Ordens_Compra.Origem AS 'Origem', 
-													IsNull(TB_Conveniadas.PK_Codigo, '0') AS 'Código da Conveniada', 
-													IsNull(TB_Conveniadas.Nome, 'NÃO LOCALIZADO') AS 'Empresa Conveniada', 
-													IsNull(TB_Clientes.PK_Matricula, '0') AS 'Matrícula', 
-													IsNull(TB_Clientes.Nome, 'NÃO LOCALIZADO') AS 'Associado', 
-													IsNull(TB_Associacoes.PK_Codigo, '0') AS 'Código da Associação', 
-													IsNull(TB_Associacoes.Sigla, 'NÃO LOCALIZADO') AS 'Sigla da Associação', 
-													TB_Parcelas.PK_NroParc AS 'Número da Prestação', ' ' + Convert(Char(10), 
-													TB_Parcelas.Data, 103) + ' ' AS 'Data da Prestação', 
-													TB_Parcelas.Valor AS 'Valor da Prestação' 
+													TB_Ordens_Compra.PK_CtOrdem AS 'cd_liberacao', ' ' + Convert(Char(10), 
+													TB_Ordens_Compra.Data, 103) + ' ' AS 'dt_compra', 
+													TB_Ordens_Compra.Condicoes AS 'nr_totalparcelas', 
+													TB_Ordens_Compra.Vlr_Tot AS 'vl_total', 
+													TB_Ordens_Compra.Origem AS 'tx_origem', 
+													IsNull(TB_Conveniadas.PK_Codigo, '0') AS 'id_conveniada', 
+													IsNull(TB_Conveniadas.Nome, 'NAO LOCALIZADO') AS 'nm_conveniada', 
+													IsNull(TB_Clientes.PK_Matricula, '0') AS 'id_matricula', 
+													IsNull(TB_Clientes.Nome, 'NAO LOCALIZADO') AS 'nm_associado', 
+													IsNull(TB_Associacoes.PK_Codigo, '0') AS 'id_associacao', 
+													IsNull(TB_Associacoes.Sigla, 'NAO LOCALIZADO') AS 'cd_siglaassociacao', 
+													TB_Parcelas.PK_NroParc AS 'nr_parcela', ' ' + Convert(Char(10), 
+													TB_Parcelas.Data, 103) + ' ' AS 'dt_parcela', 
+													TB_Parcelas.Valor AS 'vl_parcela' 
 											  FROM  TB_Ordens_Compra 
 														LEFT JOIN TB_Conveniadas ON (TB_Ordens_Compra.PK_Conveniada = TB_Conveniadas.PK_Codigo) 
 														LEFT JOIN TB_Clientes ON ((TB_Ordens_Compra.PK_Associado = TB_Clientes.PK_Matricula) AND (TB_Ordens_Compra.PK_Associacao = TB_Clientes.FK_Assoc)) 
@@ -179,10 +179,10 @@ class Calculos {
 													AND (TB_Parcelas.Data >= Cast('".$dDtCorteIni."' as DateTime)) 
 													AND (TB_Parcelas.Data <= Cast('".$dDtCorteFim."' as DateTime)) 
 													AND (TB_Associacoes.PK_Codigo = ".$iFkAssociacao.")
+													AND (TB_Conveniadas.Loja_Assoc = Cast('0' as bit))
 													".$sWhereParc."
 											 ORDER BY TB_Ordens_Compra.PK_CtOrdem ASC, TB_Parcelas.PK_NroParc ASC;
 										" ); 
-										  
 			if($oResult)
 				{
 					//percorre os resultados via o fetch()
