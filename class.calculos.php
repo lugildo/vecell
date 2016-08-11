@@ -180,6 +180,11 @@ class Calculos {
 													AND (TB_Parcelas.Data <= Cast('".$dDtCorteFim."' as DateTime)) 
 													AND (TB_Associacoes.PK_Codigo = ".$iFkAssociacao.")
 													AND (TB_Conveniadas.Loja_Assoc = Cast('0' as bit))
+													AND (TB_Ordens_Compra.PK_CtOrdem NOT IN (
+															SELECT TB_Historicos.PK_CtOrdem_Ref
+															FROM TB_Historicos
+													))
+													AND (TB_Ordens_Compra.Vlr_Tot > Cast('0' as Money))
 													".$sWhereParc."
 											 ORDER BY TB_Ordens_Compra.PK_CtOrdem ASC, TB_Parcelas.PK_NroParc ASC;
 										" ); 
