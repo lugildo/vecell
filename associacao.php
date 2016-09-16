@@ -22,8 +22,13 @@
 
 		<!-- page specific plugin styles -->
 		<link rel="stylesheet" href="assets/css/jquery-ui-1.10.3.full.min.css" />
-		<link rel="stylesheet" href="assets/css/datepicker.css" />
+		<link rel="stylesheet" href="assets/css/bootstrap-datepicker3.min.css" />
 		<link rel="stylesheet" href="assets/css/ui.jqgrid.css" />
+		<style> 
+			.datepicker {
+				z-index: 99999 !important;
+			}
+		</style>
 
 		<!-- fonts -->
 
@@ -307,7 +312,7 @@
 											</a>
 										</li>
 										<li>
-											<a href="#">
+											<a href="#modal-form" role="button" class="blue" data-toggle="modal"> 
 												<i class="icon-double-angle-right"></i>
 												Fechamento
 											</a>
@@ -447,6 +452,68 @@
 				<i class="icon-double-angle-up icon-only bigger-110"></i>
 			</a>
 		</div><!-- /.main-container -->
+		
+		<div id="modal-form" class="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="blue bigger">Relatório de fechamento</h4>
+					</div>
+
+					<div class="modal-body">
+						<div class="row">
+									<div class="col-xs-8 col-sm-11">
+										<div class="input-group">
+											<input id="id-date-picker-1" class="form-control date-picker" type="text" data-date-format="mm/yyyy">
+											<span class="input-group-addon">
+												<i class="icon-calendar bigger-110"></i>
+											</span>
+										</div>
+									</div>
+								</div>
+					</div>
+
+					<div class="modal-footer">
+						<button class="btn btn-sm" data-dismiss="modal">
+							<i class="ace-icon fa fa-times"></i>
+							Cancelar
+						</button>
+						<button class="btn btn-sm btn-primary" id="btn_datepicker_confirm">
+							<i class="ace-icon fa fa-check"></i>
+							Confirmar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- PAGE CONTENT ENDS -->
+		
+		
+		
+		<div id="modal-acordo" class="modal" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="blue bigger">Regras de negociação comercial</h4>
+					</div>
+
+					
+					<div class="modal-footer">
+						<button class="btn btn-sm" data-dismiss="modal">
+							<i class="ace-icon fa fa-times"></i>
+							Cancelar
+						</button>
+
+						
+						<button class="btn btn-sm btn-primary" id="btn_acordo_confirm">
+							<i class="ace-icon fa fa-check"></i>
+							Confirmar
+						</button>
+					</div>
+				</div>
+			</div>
+		</div><!-- PAGE CONTENT ENDS -->
 
 		<!-- basic scripts -->
 
@@ -463,7 +530,9 @@
  window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");
 </script>
 <![endif]-->
-
+        <script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
 		<script type="text/javascript">
 			if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
@@ -471,6 +540,8 @@
 		<script src="assets/js/typeahead-bs2.min.js"></script>
 
 		<!-- page specific plugin scripts -->
+		
+		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 		<script src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
 		<script src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
@@ -509,7 +580,7 @@
                             label: "Sigla: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Nome',index:'Nome',width:50, editable:true,editoptions:{size:"40",maxlength:"150"},
+						{name:'Nome',index:'Nome',width:50, editable:true,editoptions:{size:"30",maxlength:"150"},
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 2, // the position of the row
@@ -939,7 +1010,7 @@
 						formoptions: {
                             colpos: 2, // the position of the column
                             rowpos: 33, // the position of the row
-                            label: "Link Consultor: " // the label to show for each input control                    
+                            label: "Consultor vinculado: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
 						{name:'Nro_Contrato',index:'Nro_Contrato', width:50,hidden:true, editable: true, editrules: {edithidden:true} ,editoptions:{size:"20",maxlength:"90"},
@@ -1003,7 +1074,6 @@
 							enableTooltips(table);
 						}, 0);
 					},
-			
 			
 					autowidth: true
 			
@@ -1122,7 +1192,28 @@
 					}
 				)
 			
-				
+				$("#grid-table").navButtonAdd('#grid-pager', {
+				  caption: "Fechamento",
+				  title: "Gerar relatorio",
+				  buttonicon: "ui-icon-report",
+				  onClickButton: function() {
+					  
+					  $('#modal-form').modal('show');
+					 // perform something...
+				  },
+				  position: "past"
+				});
+				$("#grid-table").navButtonAdd('#grid-pager', {
+				  caption: "Acordo",
+				  title: "Regras de negociação comercial",
+				  buttonicon: "ui-icon-report",
+				  onClickButton: function() {
+					  
+					  $('#modal-acordo').modal('show');
+					 // perform something...
+				  },
+				  position: "past"
+				});
 				function style_edit_form(form) {
 					//enable datepicker on "sdate" field and switches for "stock" field
 					form.find('input[name=sdate]').datepicker({format:'yyyy-mm-dd' , autoclose:true})
@@ -1240,7 +1331,62 @@
 			
 				//var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
 			
+				
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true,
+					format: "mm/yyyy",
+					startView: "months", 
+					minViewMode: "months"
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
 			
+				//or change it into a date range picker
+				$('.input-daterange').datepicker({autoclose:true});
+			
+			
+				//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+				$('input[name=date-range-picker]').daterangepicker({
+					'applyClass' : 'btn-sm btn-success',
+					'cancelClass' : 'btn-sm btn-default',
+					locale: {
+						applyLabel: 'Apply',
+						cancelLabel: 'Cancel',
+					}
+				})
+				.prev().on(ace.click_event, function(){
+					$(this).next().focus();
+				});
+				
+			});
+			$( "#btn_datepicker_confirm" ).click(function() {
+				var dateInfo = $("#id-date-picker-1").val();
+				grid = $("#grid-table");
+					  var rowKey = grid.getGridParam("selrow");
+					  //alert(rowKey);
+				$.ajax({
+                    url : '/PHPExcel/Examples/30template.php',//url para acessar o arquivo
+                    data: {id : rowKey, date: dateInfo },//parametros para a funcao
+                    type : 'post',//PROTOCOLO DE ENVIO PODE SER GET/POST
+                    dataType : 'json'//,//TIPO DO RETORNO JSON/TEXTO 
+                    //success : function(data){//DATA É O VALOR RETORNADO
+                        //alert(data.valor);//VALOR INDICE DO ARRAY/JSON
+						
+					//},
+				}).done(function(data){
+					var $a = $("<a>");
+					$a.attr("href",data.file);
+					$("body").append($a);
+					$a.attr("download","relatorio.xls");
+					$a[0].click();
+					$a.remove();
+				});
+				 $('#modal-form').modal('hide');
 			});
 			
 		</script>
