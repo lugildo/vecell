@@ -274,6 +274,49 @@
 												Conveniada
 											</a>
 										</li>
+										
+										
+										
+										
+										<li>
+											<a href="#" class="dropdown-toggle">
+												<i class="icon-double-angle-right"></i>
+
+												Comercial 
+												<b class="arrow icon-angle-down"></b>
+											</a>
+
+											<ul class="submenu">
+												<li class="active">
+													<a href="produtos.php">
+														<i class="icon-double-angle-right"></i>
+														Produtos
+													</a>
+												</li>
+
+												<li>
+													<a href="incidencias.php">
+														<i class="icon-double-angle-right"></i>
+														Incidencias
+													</a>
+												</li>
+												<li>
+													<a href="regras.php">
+														<i class="icon-double-angle-right"></i>
+														Regras
+													</a>
+												</li>
+												
+											</ul>
+										</li>
+										
+										
+										
+										
+										
+										
+										
+										
 									</ul>
 								</li>
 								<li>
@@ -1389,6 +1432,26 @@
 				 $('#modal-form').modal('hide');
 			});
 			
+			/*TO DO GUGU
+			dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=estados',
+			type:"GET",
+			buildSelect: function(data) {
+				var response = $.parseJSON(data); //json data
+				//alert(response);
+					var s = '<select style="width: 520px">';
+					s += '<option value="0">--- Selecione o Estado ---</option>';
+					if (response && response.length) { //
+						for (var i = 0, l=response.length; i<l ; i++) {
+						var ri = response[i]; 
+							s += '<option value="'+ri+'">'+ri+'</option>';
+						}
+					}
+					return s + "</select>";
+				
+				}
+				
+				// https://twitter.github.io/typeahead.js/examples/
+			*/
 		</script>
 	</body>
 </html>

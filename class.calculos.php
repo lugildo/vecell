@@ -200,5 +200,13 @@ class Calculos {
 
 		return $oParcelas;
 	}
+	
+	
+	// TO DO GUGU
+	function getCondicao () {
+		$aCondicao = array(	1 => 'TAUC sobre a primeira parcela',
+							2 => ');
+		
+	}
 }
 ?>
