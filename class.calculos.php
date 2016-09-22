@@ -205,7 +205,15 @@ class Calculos {
 	// TO DO GUGU
 	function getCondicao () {
 		$aCondicao = array(	1 => 'TAUC sobre a primeira parcela',
-							2 => ');
+							2 => 'TAUC sobre a primeira parcela limitada a um número de parcela especificado no contrato',
+							3 => 'MENSALIDADE todos os associados ativos',
+							4 => 'MENSALIDADE todos os associados ativos com transação financeira, exceto seguro',
+							5 => 'MENSALIDADE todos os associados ativos com transação financeira',
+							6 => 'MENSALIDADE todos os associados ativos com nova compra no mês',
+							7 => 'SEGURO',
+							8 => 'SERVIÇOS ex. extrato',
+							9 => 'OUTRAS DESPESAS ex. motoboy',
+							10 => 'ASSISTENCIA FUNERAL');
 		
 	}
 }

@@ -601,7 +601,39 @@ class Crud {
 
 		return true; 
 	}
-/*	
+	
+// ------------------------------------------------------------------
+// TODO GUGU 22092016
+// ------------------------------------------------------------------
+
+	// Função para buscar produtos	
+	function getProdutos($sKey) {
+		try {
+			$oResult = $this->oCon->query(" SELECT PK_Codigo,
+				 									 Nome,
+													 Valor,
+													 Taxa
+				                                FROM TB_Produtos 
+			                                   WHERE $sKey 
+											   order by Nome ASC");
+			if($oResult)
+				{
+					$oProdutos = $oResult->fetchAll(PDO::FETCH_OBJ);
+				}
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return $oProdutos;
+	}
+
+// ------------------------------------------------------------------
+// END TODO GUGU 22092016
+// ------------------------------------------------------------------
+
+	
+	
+	/*	
 	// Função para excluir centro de custo
 	function deleteCentroCusto($iIdCentroCusto) {
 		try {
