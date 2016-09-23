@@ -607,7 +607,7 @@ class Crud {
 // ------------------------------------------------------------------
 
 	// Função para buscar produtos	
-	function getProdutos($sKey) {
+	function getProdutos($sKey = 'PK_Codigo > 0') {
 		try {
 			$oResult = $this->oCon->query(" SELECT PK_Codigo,
 				 									 Nome,
