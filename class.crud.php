@@ -24,7 +24,7 @@ class Crud {
 	}
 	
 	// Função para listar associaçoes
-	function getAssociacoes() {
+	function getAssociacoes($sWhere = ' WHERE z.PK_Codigo > 0 ') {
 		try {
 			$oResult = $this->oCon->query(" SELECT 	z.PK_Codigo, z.Sigla, z.Nome, 
 													z.CNPJ, z.Bco, z.Ag, z.Cta, 
@@ -60,6 +60,7 @@ class Crud {
 										 LEFT  JOIN TB_Bancos      As a ON (a.PK_Codigo = z.Bco)
 										 LEFT  JOIN TB_Consultores As b ON (b.PK_Codigo = z.FK_Consultor)
 										INNER  JOIN TB_Estados     As c ON (c.PK_Sigla  = z.FK_UF)
+										".$sWhere."
 										   ORDER BY Sigla ASC" ); 
 										  
 			if($oResult)
@@ -73,6 +74,32 @@ class Crud {
 		}
 
 		return $oAssociacoes;
+	}
+	
+	
+	// Função para listar associaçoes
+	// TODO: incluir filtro para carregar somente as associações com movimento no mês
+	function getComboAssociacoes($sWhere = "z.PK_Codigo > 0") {
+		try {
+			$oResult = $this->oCon->query(" SELECT 	z.PK_Codigo, z.Sigla, z.Nome
+											FROM 	TB_Associacoes As z
+										 LEFT  JOIN TB_Bancos      As a ON (a.PK_Codigo = z.Bco)
+										 LEFT  JOIN TB_Consultores As b ON (b.PK_Codigo = z.FK_Consultor)
+										INNER  JOIN TB_Estados     As c ON (c.PK_Sigla  = z.FK_UF)
+										where ".$sWhere."
+										   ORDER BY Sigla ASC" ); 
+										  
+			if($oResult)
+				{
+					//percorre os resultados via o fetch()
+					$oComboAssociacoes = $oResult->fetchAll(PDO::FETCH_OBJ);
+				}
+
+		} catch(PDOException $e) {
+	    	echo 'ERROR: ' . $e->getMessage();
+		}
+
+		return $oComboAssociacoes;
 	}
 	
 	// Função para atualizar associações
@@ -582,72 +609,9 @@ class Crud {
 
 		return true;
 	}
-	
-	
-	// Função 
-	function insertCentroCusto($aInsertCentroCusto) {
-		try {
-			$oInsertCentroCusto = $this->oCon->prepare(" INSERT INTO centrodecusto 
-													                 (cd_ccusto, nm_ccusto, cd_status)
-															  VALUES (:cd_ccusto, :nm_ccusto, :cd_status) "); 
-			$oInsertCentroCusto->bindParam(":cd_ccusto", $aInsertCentroCusto['cd_ccusto'] , PDO::PARAM_STR);
-			$oInsertCentroCusto->bindParam(":nm_ccusto", $aInsertCentroCusto['nm_ccusto'] , PDO::PARAM_STR);
-			$oInsertCentroCusto->bindParam(":cd_status", $aInsertCentroCusto['cd_status'] , PDO::PARAM_STR);
-			//$oInsertCentroCusto->bindParam(":id_ccusto", $aInsertCentroCusto['id_ccusto'] , PDO::PARAM_INT);
-			$oInsertCentroCusto->execute();
-		} catch(PDOException $e) {
-	    	echo 'ERROR: ' . $e->getMessage();
-		}
-
-		return true; 
-	}
-	
-// ------------------------------------------------------------------
-// TODO GUGU 22092016
-// ------------------------------------------------------------------
-
-	// Função para buscar produtos	
-	function getProdutos($sKey = 'PK_Codigo > 0') {
-		try {
-			$oResult = $this->oCon->query(" SELECT PK_Codigo,
-				 									 Nome,
-													 Valor,
-													 Taxa
-				                                FROM TB_Produtos 
-			                                   WHERE $sKey 
-											   order by Nome ASC");
-			if($oResult)
-				{
-					$oProdutos = $oResult->fetchAll(PDO::FETCH_OBJ);
-				}
-		} catch(PDOException $e) {
-	    	echo 'ERROR: ' . $e->getMessage();
-		}
-
-		return $oProdutos;
-	}
-
-// ------------------------------------------------------------------
-// END TODO GUGU 22092016
-// ------------------------------------------------------------------
 
 	
 	
-	/*	
-	// Função para excluir centro de custo
-	function deleteCentroCusto($iIdCentroCusto) {
-		try {
-			$oDeleteCentroCusto = $this->oCon->prepare(" DELETE FROM centrodecusto 
-							  						      WHERE id_ccusto = ".$aUpdateAssociacoes['id_ccusto']."); 
-			$oDeleteCentroCusto->bindParam(":id_ccusto", $iIdCentroCusto, PDO::PARAM_INT);
-			$oDeleteCentroCusto->execute();
-		} catch(PDOException $e) {
-	    	echo 'ERROR: ' . $e->getMessage();
-		}
-
-		return true;
-	}
-	*/
 }
 
 

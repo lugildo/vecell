@@ -1,5 +1,6 @@
 <?php
-	zray_disable(true);//desativa o servidor zend	
+	zray_disable(true);//desativa o servidor zend
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -282,14 +283,14 @@
 											</a>
 
 											<ul class="submenu">
-												<li class="active">
+												<li>
 													<a href="produtos.php">
 														<i class="icon-double-angle-right"></i>
 														Produtos
 													</a>
 												</li>
 
-												<li>
+												<li class="active">
 													<a href="incidencias.php">
 														<i class="icon-double-angle-right"></i>
 														Incidencias
@@ -412,10 +413,10 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								Produtos
+								Incidências
 								<small>
 									<i class="icon-double-angle-right"></i>
-									Listagem de produtos
+									Listagem de incidências
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -520,7 +521,7 @@
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 		<script src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
-		<script src="assets/js/jqGrid/i18n/grid.locale-pt-br.js"></script>
+		<script src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 		
 
 		<!-- ace scripts -->
@@ -535,43 +536,91 @@
 				var grid_selector = "#grid-table";
 				var pager_selector = "#grid-pager";
 			    
-				jQuery(grid_selector).jqGrid({
-					
-					url:'http://104.236.0.195/crud_produtos.php',
+				jQuery(grid_selector).jqGrid({ 
+					url:'http://104.236.0.195/crud_incidencias.php',
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Produto', 'Valor', 'Taxa'],
+					colNames:['PK_Codigo','Cód. Prod.','Produto', 'Cond 1', 'Cond 2', 'Cond 3', 'Cond 4', 'Cond 5'],
 					colModel:[
-						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
+					
+						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:30, editable: false,
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 1, // the position of the row
-                            label: "Código: " // the label to show for each input control                    
+                            label: "Produto: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Nome',index:'Nome', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						{name:'FK_Produto',index:'FK_Produto', width:30,hidden:false, editable: true, editrules: {edithidden:true}, edittype: "select", 
+							editoptions:{
+								dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=produtos',
+								type:"GET",
+								buildSelect: function(data) {
+									var response = $.parseJSON(data); //json data
+									//alert(response);
+										var s = '<select style="width: 520px">';
+										s += '<option value="0">--- Selecione o produto ---</option>';
+										
+										$.each(response, function () {
+											s += '<option value="' + this.PK_Codigo + '">' + this.Nome + ' | Valor:' + this.Valor + ' | Taxa: ' + this.Taxa +
+											   '</option>';
+										})
+										
+										return s + "</select>";
+										},
+							},
+							formoptions: {
+								colpos: 1, // the position of the column
+								rowpos: 2, // the position of the row
+								label: "Produto: " // the label to show for each input control                    
+								//elmsuffix: " * " // the suffix to show after that
+							}
+						},
+						{name:'Produto',index:'Produto', width:200, editable: false,
 						formoptions: {
-							colpos: 1, // the position of the column
-							rowpos: 2, // the position of the row
-							label: "Produto: " // the label to show for each input control                    
-							//elmsuffix: " * " // the suffix to show after that
-						}},
-						{name:'Valor',index:'Valor', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+                            colpos: 1, // the position of the column
+                            rowpos: 1, // the position of the row
+                            label: "Produto: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						
+						
+						{name:'Condicao1',index:'Condicao1', width:20, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
 						formoptions: {
 							colpos: 1, // the position of the column
 							rowpos: 3, // the position of the row
-							label: "Valor: " // the label to show for each input control                    
+							label: "Cond1: " // the label to show for each input control                    
 							//elmsuffix: " * " // the suffix to show after that
 						}},
-						{name:'Taxa',index:'Taxa', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						{name:'Condicao2',index:'Condicao2', width:20, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
 						formoptions: {
 							colpos: 1, // the position of the column
 							rowpos: 4, // the position of the row
-							label: "Taxa: " // the label to show for each input control                    
+							label: "Cond2: " // the label to show for each input control                    
 							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao3',index:'Condicao3', width:20, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 1, // the position of the column
+							rowpos: 5, // the position of the row
+							label: "Cond3: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao4',index:'Condicao4', width:20, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 1, // the position of the column
+							rowpos: 6, // the position of the row
+							label: "Cond4: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao5',index:'Condicao5', width:20, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 1, // the position of the column
+							rowpos: 7, // the position of the row
+							label: "Cond5: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that 
 						}}
+// Fim das alterações
 					], 
-					
 					jsonReader: {
 							repeatitems: false,
 							root: function(obj) { return obj; },
@@ -600,7 +649,7 @@
 						}, 0);
 					},
 					
-					editurl: 'http://104.236.0.195/crud_produtos.php',//nothing is saved
+					editurl: 'http://104.236.0.195/crud_incidencias.php',//nothing is saved
 			
 					autowidth: true
 			
@@ -618,6 +667,14 @@
 							.after('<span class="lbl"></span>');
 					}, 0);
 				}
+				//enable datepicker
+				function pickDate( cellvalue, options, cell ) {
+					setTimeout(function(){
+						$(cell) .find('input[type=text]')
+								.datepicker({format:'yyyy-mm-dd' , autoclose:true}); 
+					}, 0);
+				}
+			
 			
 				//navButtons
 				jQuery(grid_selector).jqGrid('navGrid',pager_selector,
@@ -634,7 +691,6 @@
 						refreshicon : 'icon-refresh green',
 						view: true,
 						viewicon : 'icon-zoom-in grey',
-						refresh:true,
 					},
 					{
 						//edit record form
@@ -642,8 +698,9 @@
 						height: 'auto',
                     	width: 1024,
 						editCaption: "Alterar dados do produto",
-						recreateForm: true,
+						//recreateForm: true,
 						closeAfterEdit: true,
+						reloadAfterSubmit:false,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
 							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header"/>')
@@ -656,8 +713,8 @@
                     	width: 1024,
 						addCaption: "Cadastrar produto",
 						closeAfterAdd: true,
-						recreateForm: true,
 						viewPagerButtons: false,
+						reloadAfterSubmit:false,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
 							form.closest('.ui-jqdialog').find('.ui-jqdialog-titlebar').wrapInner('<div class="widget-header" />')
@@ -667,7 +724,7 @@
 					{
 						//delete record form
 						delCaption: "Excluir produto",
-						recreateForm: true,
+						reloadAfterSubmit:false,
 						beforeShowForm : function(e) {
 							var form = $(e[0]);
 							if(form.data('styled')) return false;
@@ -849,8 +906,6 @@
 					$('.navtable .ui-pg-button').tooltip({container:'body'});
 					$(table).find('.ui-pg-div').tooltip({container:'body'});
 				}
-			
-				//var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
 			
 			});
 			

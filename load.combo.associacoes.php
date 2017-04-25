@@ -3,7 +3,8 @@
 
 include_once('class.crud.php');
 
-$combobox = $_GET['lookup'];
+$combobox  = $_GET['lookup'];
+$sDiaCorte = $_GET['sdiacorte'];
 
 if ($combobox == "estados") {
 	$oCrud = new Crud();
@@ -26,60 +27,40 @@ if ($combobox == "bancos") {
 	echo json_encode($aBancos);
 }
 
-if ($combobox == "consultores") {
-	echo "";
-}
-
-// ------------------------------------------------------------------
-// TODO GUGU 22092016
-// ------------------------------------------------------------------
 if ($combobox == "produtos") {
-	$oCrud = new Crud();
-	$oProdutos = $oCrud->getProdutos('PK_Codigo > 0' );
+	include_once('class.calculos.php');
 
-	foreach($oProdutos as $iKey => $aDados) {
-		$aProdutos[$iKey] = utf8_encode($aDados->Nome);
-	}
-	unset($oCrud, $oProdutos);
-	echo json_encode($aProdutos);
+	$oCrud = new Calculos();
+	$oProdutos = $oCrud->getProdutos();
+	
+	$i = 0;
+	foreach ( $oProdutos as $aProdutos ) { 
+		$oProdutos[$i]->PK_Codigo 	= utf8_encode($oProdutos[$i]->PK_Codigo);
+		$oProdutos[$i]->Nome 		= utf8_encode($oProdutos[$i]->Nome);
+		$oProdutos[$i]->Valor 		= utf8_encode($oProdutos[$i]->Valor);
+		$oProdutos[$i]->Taxa 		= utf8_encode($oProdutos[$i]->Taxa);
+		$i++;
+	}	
+	echo json_encode($oProdutos);
 }
-
 
 if ($combobox == "associacoes") {
 	$oCrud = new Crud();
-	$oAssociacoes = $oCrud->getAssociacoes();
-
-	foreach($oAssociacoes as $iKey => $aDados) {
-		$aAssociacoes[$iKey] = utf8_encode($aDados->Nome);
+	$sWhere = '(z.Dia_Corte = '.$sDiaCorte.')';
+	$oAssociacoes = $oCrud->getComboAssociacoes($sWhere);
+	
+	$i = 0;
+	foreach($oAssociacoes as $aDados) {
+		$oAssociacoes[$i]->PK_Codigo = utf8_encode($oAssociacoes[$i]->PK_Codigo);
+		$oAssociacoes[$i]->Nome = utf8_encode($oAssociacoes[$i]->Nome);
+		if (empty($oAssociacoes[$i]->Sigla)) {
+			$oAssociacoes[$i]->Sigla 	= $oAssociacoes[$i]->Nome;
+		} else {
+			$oAssociacoes[$i]->Sigla 	= utf8_encode($oAssociacoes[$i]->Sigla);
+		}
+		$i++;
 	}
-	unset($oCrud, $oAssociacoes);
-	echo json_encode($aAssociacoes);
+	echo json_encode($oAssociacoes);
 }
-
-
-if ($combobox == "associados") {
-	$oCrud = new Crud();
-	$oAssociados = $oCrud->getAssociados('PK_Codigo > 0' );
-
-	foreach($oAssociados as $iKey => $aDados) {
-		$aAssociados[$iKey] = utf8_encode($aDados->Nome);
-	}
-	unset($oCrud, $oAssociados);
-	echo json_encode($aAssociados);
-}
-
-
-if ($combobox == "conveniadas") {
-	echo "";
-}
-
-
-if ($combobox == "incidencias") {
-	echo "";
-}
-
-// ------------------------------------------------------------------
-// END TODO GUGU 22092016
-// ------------------------------------------------------------------
 
 ?>

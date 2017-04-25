@@ -1432,83 +1432,26 @@
 				 $('#modal-form').modal('hide');
 			});
 			
-// ------------------------------------------------------------------
-// TODO GUGU 22092016
-// Documentação Exemplos 1: https://twitter.github.io/typeahead.js/examples/
-// Sr. Luciano, não achei o exemplo abaixo no site, favor verificar.
-// ------------------------------------------------------------------
-/*
-			dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=produtos',
+			/*TO DO GUGU
+			dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=estados',
 			type:"GET",
 			buildSelect: function(data) {
 				var response = $.parseJSON(data); //json data
 				//alert(response);
-				var s = '<select style="width: 520px">';
-				s += '<option value="0">--- Selecione o Produto ---</option>';
-				if (response && response.length) { //
-					for (var i = 0, l=response.length; i<l ; i++) {
+					var s = '<select style="width: 520px">';
+					s += '<option value="0">--- Selecione o Estado ---</option>';
+					if (response && response.length) { //
+						for (var i = 0, l=response.length; i<l ; i++) {
 						var ri = response[i]; 
-						s += '<option value="'+ri+'">'+ri+'</option>';
+							s += '<option value="'+ri+'">'+ri+'</option>';
+						}
 					}
+					return s + "</select>";
+				
 				}
-				return s + "</select>";
-			}
-*/
-/*
-			dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=associacoes',
-			type:"GET",
-			buildSelect: function(data) {
-				var response = $.parseJSON(data); //json data
-				//alert(response);
-				var s = '<select style="width: 520px">';
-				s += '<option value="0">--- Selecione a Associacao ---</option>';
-				if (response && response.length) { //
-					for (var i = 0, l=response.length; i<l ; i++) {
-						var ri = response[i]; 
-						s += '<option value="'+ri+'">'+ri+'</option>';
-					}
-				}
-				return s + "</select>";
-			}
-*/
-/*
-			dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=associados',
-			type:"GET",
-			buildSelect: function(data) {
-				var response = $.parseJSON(data); //json data
-				//alert(response);
-				var s = '<select style="width: 520px">';
-				s += '<option value="0">--- Selecione o Associado ---</option>';
-				if (response && response.length) { //
-					for (var i = 0, l=response.length; i<l ; i++) {
-						var ri = response[i]; 
-						s += '<option value="'+ri+'">'+ri+'</option>';
-					}
-				}
-				return s + "</select>";
-			}
-*/
-/*
-			dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=conveniadas',
-			type:"GET",
-			buildSelect: function(data) {
-				var response = $.parseJSON(data); //json data
-				//alert(response);
-				var s = '<select style="width: 520px">';
-				s += '<option value="0">--- Selecione a Conveniada ---</option>';
-				if (response && response.length) { //
-					for (var i = 0, l=response.length; i<l ; i++) {
-						var ri = response[i]; 
-						s += '<option value="'+ri+'">'+ri+'</option>';
-					}
-				}
-				return s + "</select>";
-			}
-*/
-// ------------------------------------------------------------------
-// END TODO GUGU 22092016
-// ------------------------------------------------------------------
-
+				
+				// https://twitter.github.io/typeahead.js/examples/
+			*/
 		</script>
 	</body>
 </html>

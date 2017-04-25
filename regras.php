@@ -1,5 +1,6 @@
 <?php
-	zray_disable(true);//desativa o servidor zend	
+	zray_disable(true);//desativa o servidor zend
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -282,7 +283,7 @@
 											</a>
 
 											<ul class="submenu">
-												<li class="active">
+												<li>
 													<a href="produtos.php">
 														<i class="icon-double-angle-right"></i>
 														Produtos
@@ -295,7 +296,7 @@
 														Incidencias
 													</a>
 												</li>
-												<li>
+												<li class="active">
 													<a href="regras.php">
 														<i class="icon-double-angle-right"></i>
 														Regras
@@ -412,10 +413,10 @@
 					<div class="page-content">
 						<div class="page-header">
 							<h1>
-								Produtos
+								Regras
 								<small>
 									<i class="icon-double-angle-right"></i>
-									Listagem de produtos
+									Listagem de regras
 								</small>
 							</h1>
 						</div><!-- /.page-header -->
@@ -489,6 +490,9 @@
 			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
 				<i class="icon-double-angle-up icon-only bigger-110"></i>
 			</a>
+			
+			<div class="ob-api-what ob-one-line" data-language="pt" data-partner="leouve"></div>
+<script type="text/javascript" src="http://widgets.outbrain.com/external/whatIsForAPI/brandingForApi.js"></script>
 		</div><!-- /.main-container -->
 		
 		<!-- basic scripts -->
@@ -520,7 +524,7 @@
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/date-time/bootstrap-datepicker.min.js"></script>
 		<script src="assets/js/jqGrid/jquery.jqGrid.min.js"></script>
-		<script src="assets/js/jqGrid/i18n/grid.locale-pt-br.js"></script>
+		<script src="assets/js/jqGrid/i18n/grid.locale-en.js"></script>
 		
 
 		<!-- ace scripts -->
@@ -536,42 +540,143 @@
 				var pager_selector = "#grid-pager";
 			    
 				jQuery(grid_selector).jqGrid({
-					
-					url:'http://104.236.0.195/crud_produtos.php',
+					url:'http://104.236.0.195/crud_regras.php',
 					datatype: "json",
 					height: 250,
-					colNames:['Código','Produto', 'Valor', 'Taxa'],
+					colNames:['Código','FK_Produto','Produto', 'Associacao', 'FK_Associacao', 'Associado',  'FK_Associado',  'FK_Conveniada', 'Conveniada',  'FK_Incidencia', 'Cond 1', 'Cond 2', 'Cond 3', 'Cond 4', 'Cond 5', 'Limite'],
 					colModel:[
-						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:20, editable: false,
+						{name:'PK_Codigo',index:'PK_Codigo', key:true, width:30, editable: false,
 						formoptions: {
                             colpos: 1, // the position of the column
                             rowpos: 1, // the position of the row
                             label: "Código: " // the label to show for each input control                    
                             //elmsuffix: " * " // the suffix to show after that
                         }},
-						{name:'Nome',index:'Nome', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						{name:'FK_Produto',index:'FK_Produto', width:30,hidden:true, editable: true, editrules: {edithidden:true}, edittype: "select", 
+							editoptions:{
+								dataUrl:'http://104.236.0.195/load.combo.associacoes.php?lookup=produtos',
+								type:"GET",
+								buildSelect: function(data) {
+									var response = $.parseJSON(data); //json data
+									//alert(response);
+										var s = '<select style="width: 520px">';
+										s += '<option value="0">--- Selecione o produto ---</option>';
+										
+										$.each(response, function () {
+											s += '<option value="' + this.PK_Codigo + '">' + this.Nome + ' | Valor:' + this.Valor + ' | Taxa: ' + this.Taxa +
+											   '</option>';
+										})
+										
+										return s + "</select>";
+										},
+							},
+							formoptions: {
+								colpos: 1, // the position of the column
+								rowpos: 2, // the position of the row
+								label: "Produto: " // the label to show for each input control                    
+								//elmsuffix: " * " // the suffix to show after that
+							}
+						},
+						{name:'Produto',index:'Produto', width:100, editable: false,
 						formoptions: {
-							colpos: 1, // the position of the column
-							rowpos: 2, // the position of the row
-							label: "Produto: " // the label to show for each input control                    
+                            colpos: 1, // the position of the column
+                            rowpos: 1, // the position of the row
+                            label: "Produto: " // the label to show for each input control                    
+                            //elmsuffix: " * " // the suffix to show after that
+                        }},
+						{name:'Sigla',index:'Sigla', width:90, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 1, // the position of the row
+							label: "Associacao: " // the label to show for each input control                    
 							//elmsuffix: " * " // the suffix to show after that
 						}},
-						{name:'Valor',index:'Valor', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						{name:'FK_Associacao',index:'FK_Associacao', width:50 ,hidden:true, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 1, // the position of the row
+							label: "Associacao: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Associado',index:'Associado', width:90, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 1, // the position of the row
+							label: "Associado: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'FK_Associado',index:'FK_Associado', width:50 ,hidden:true, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 1, // the position of the column
+							rowpos: 5, // the position of the row
+							label: "FK_Associado: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Conveniada',index:'Conveniada', width:90, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 2, // the position of the row
+							label: "Conveniada " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'FK_Conveniada',index:'FK_Conveniada', width:90 ,hidden:true, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 2, // the position of the row
+							label: "FK_Conveniada " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'FK_Incidencia',index:'FK_Incidencia', width:50 ,hidden:true, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 1, // the position of the column
+							rowpos: 6, // the position of the row
+							label: "FK_Incidencia: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao1',index:'Condicao1', width:50, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
 						formoptions: {
 							colpos: 1, // the position of the column
 							rowpos: 3, // the position of the row
-							label: "Valor: " // the label to show for each input control                    
+							label: "Condicao1: " // the label to show for each input control                    
 							//elmsuffix: " * " // the suffix to show after that
 						}},
-						{name:'Taxa',index:'Taxa', width:90, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						{name:'Condicao2',index:'Condicao2', width:50, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 3, // the position of the row
+							label: "Condicao2: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao3',index:'Condicao3', width:50, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
 						formoptions: {
 							colpos: 1, // the position of the column
 							rowpos: 4, // the position of the row
-							label: "Taxa: " // the label to show for each input control                    
+							label: "Condicao3: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao4',index:'Condicao4', width:50, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 4, // the position of the row
+							label: "Condicao4: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Condicao5',index:'Condicao5', width:50, editable: false,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 1, // the position of the column
+							rowpos: 5, // the position of the row
+							label: "Condicao5: " // the label to show for each input control                    
+							//elmsuffix: " * " // the suffix to show after that
+						}},
+						{name:'Lim_Qt_Compras',index:'Lim_Qt_Compras', width:50, editable: true,editrules: {edithidden:true} ,editoptions:{size:"40",maxlength:"90"},
+						formoptions: {
+							colpos: 2, // the position of the column
+							rowpos: 5, // the position of the row
+							label: "Limite: " // the label to show for each input control                    
 							//elmsuffix: " * " // the suffix to show after that
 						}}
+// Fim das alterações
 					], 
-					
 					jsonReader: {
 							repeatitems: false,
 							root: function(obj) { return obj; },
@@ -581,7 +686,7 @@
 						},
 					loadonce: true,
 					pager: pager_selector,
-					rowNum: 10,
+					rowNum: 50,
 					rowList: [5, 10, 20, 50, 100, 200],
 					viewrecords: true,
 					toppager: false,
@@ -600,7 +705,7 @@
 						}, 0);
 					},
 					
-					editurl: 'http://104.236.0.195/crud_produtos.php',//nothing is saved
+					editurl: 'http://104.236.0.195/crud_regras.php',//nothing is saved
 			
 					autowidth: true
 			
@@ -618,6 +723,14 @@
 							.after('<span class="lbl"></span>');
 					}, 0);
 				}
+				//enable datepicker
+				function pickDate( cellvalue, options, cell ) {
+					setTimeout(function(){
+						$(cell) .find('input[type=text]')
+								.datepicker({format:'yyyy-mm-dd' , autoclose:true}); 
+					}, 0);
+				}
+			
 			
 				//navButtons
 				jQuery(grid_selector).jqGrid('navGrid',pager_selector,
@@ -634,7 +747,6 @@
 						refreshicon : 'icon-refresh green',
 						view: true,
 						viewicon : 'icon-zoom-in grey',
-						refresh:true,
 					},
 					{
 						//edit record form
@@ -852,8 +964,66 @@
 			
 				//var selr = jQuery(grid_selector).jqGrid('getGridParam','selrow');
 			
+				
+				//datepicker plugin
+				//link
+				$('.date-picker').datepicker({
+					autoclose: true,
+					todayHighlight: true,
+					format: "mm/yyyy",
+					startView: "months", 
+					minViewMode: "months"
+				})
+				//show datepicker when clicking on the icon
+				.next().on(ace.click_event, function(){
+					$(this).prev().focus();
+				});
+			
+				//or change it into a date range picker
+				//$('.input-daterange').datepicker({autoclose:true});
+			
+			
+				//to translate the daterange picker, please copy the "examples/daterange-fr.js" contents here before initialization
+				$('input[name=date-range-picker]').daterangepicker({
+					'applyClass' : 'btn-sm btn-success',
+					'cancelClass' : 'btn-sm btn-default',
+					locale: {
+						applyLabel: 'Apply',
+						cancelLabel: 'Cancel',
+					}
+				})
+				.prev().on(ace.click_event, function(){
+					$(this).next().focus();
+				});
+				
+			});
+			$( "#btn_datepicker_confirm" ).click(function() {
+				var dateInfo = $("#id-date-picker-1").val();
+				grid = $("#grid-table");
+					  var rowKey = grid.getGridParam("selrow");
+					  //alert(rowKey);
+				$.ajax({
+                    url : '/PHPExcel/Examples/30template.php',//url para acessar o arquivo
+                    data: {id : rowKey, date: dateInfo },//parametros para a funcao
+                    type : 'post',//PROTOCOLO DE ENVIO PODE SER GET/POST
+                    dataType : 'json'//,//TIPO DO RETORNO JSON/TEXTO 
+                    //success : function(data){//DATA É O VALOR RETORNADO
+                        //alert(data.valor);//VALOR INDICE DO ARRAY/JSON
+						
+					//},
+				}).done(function(data){
+					var $a = $("<a>");
+					$a.attr("href",data.file);
+					$("body").append($a);
+					$a.attr("download","relatorio.xls");
+					$a[0].click();
+					$a.remove();
+				});
+				 $('#modal-form').modal('hide');
 			});
 			
 		</script>
+		
+
 	</body>
 </html>
